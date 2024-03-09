@@ -1,5 +1,6 @@
 ﻿using NSFWMiniJam3.Manager;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace NSFWMiniJam3.World
 {
@@ -7,11 +8,19 @@ namespace NSFWMiniJam3.World
     {
         [SerializeField]
         private Node _destination;
+        public UnityEvent enterDoorEvent;
+        
+        private PlayerController _lastSeenPlayerController;
 
         public void Interact(PlayerController pc)
         {
+            _lastSeenPlayerController = pc;
+            enterDoorEvent?.Invoke();
+        }
+
+        public void ChangeRoom(int _) {
             RoomsManager.Instance.ShowRoom(_destination.ParentRoom);
-            pc.transform.position = _destination.transform.position;
+            _lastSeenPlayerController.transform.position = _destination.transform.position;
         }
 
         private void OnDrawGizmos()
