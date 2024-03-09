@@ -15,7 +15,7 @@ namespace NSFWMiniJam3
 
         private Rigidbody2D _rb;
 
-        private Vector2 _mov;
+        private float _movX;
 
         private InteractionTarget _interactionTarget;
 
@@ -26,7 +26,7 @@ namespace NSFWMiniJam3
 
         private void FixedUpdate()
         {
-            _rb.velocity = _mov * _info.Speed;
+            _rb.velocity = new(_movX * _info.Speed, _rb.velocity.y);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -53,7 +53,9 @@ namespace NSFWMiniJam3
 
         public void OnMove(InputAction.CallbackContext value)
         {
-            _mov = value.ReadValue<Vector2>();
+            _movX = value.ReadValue<Vector2>().x;
+            if (_movX < 0f) _movX = -1f;
+            else if (_movX > 0f) _movX = 1f;
         }
 
         public void OnUse(InputAction.CallbackContext value)
