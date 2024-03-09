@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Map
   - Player
-  - 
+  - NPC
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1428530823
+    locked: 0
+  - name: NPC
+    uniqueID: 2166319361
     locked: 0
