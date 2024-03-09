@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// !!! has to be on the same object as camera !!!
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 public class Transition : MonoBehaviour
 {
-    public Material transition;
     [Range(0.0f, 2)] public float transitionDuration = 0.6f;
 
     public UnityEvent transitionStart;
@@ -74,21 +71,5 @@ public class Transition : MonoBehaviour
             transitionTime = 0;
             next_room_id = -1;
         }
-    }
-
-    private void SetPropertiesToTransitionShader() {
-
-    }
-
-    private void OnRenderImage(RenderTexture src, RenderTexture dest) {
-        Debug.Log("pls");
-        /* if (transition == null) {
-            Graphics.Blit(src, dest);
-            Debug.Log("nope");
-            return;
-        }
-
-        SetPropertiesToTransitionShader();
-        Graphics.Blit(src, dest, transition); */
     }
 }

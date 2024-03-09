@@ -588,7 +588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ed4e9beade34848ae293349439d03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 2100000, guid: f66b7547fbf213c42ae5930865d72dba, type: 2}
   transitionDuration: 0.6
   transitionStart:
     m_PersistentCalls:
@@ -635,7 +634,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 723768154}
         m_TargetAssemblyTypeName: Crossfade, Assembly-CSharp
         m_MethodName: TransitionEnd
         m_Mode: 1
@@ -662,7 +661,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 723768154}
         m_TargetAssemblyTypeName: Crossfade, Assembly-CSharp
         m_MethodName: OnTransitionProgress
         m_Mode: 0
