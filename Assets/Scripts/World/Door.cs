@@ -8,10 +8,10 @@ namespace NSFWMiniJam3.World
         [SerializeField]
         private Node _destination;
 
-        public void Interact()
+        public void Interact(PlayerController pc)
         {
             RoomsManager.Instance.ShowRoom(_destination.ParentRoom);
-            transform.position = _destination.ParentRoom.transform.position;
+            pc.transform.position = _destination.transform.position;
         }
 
         private void OnDrawGizmos()

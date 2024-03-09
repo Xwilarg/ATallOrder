@@ -18,6 +18,10 @@ namespace NSFWMiniJam3.Manager
             _rooms = FindObjectsOfType<Room>();
 
             Assert.AreEqual(1, _rooms.Count(x => x.IsStartingRoom), "There must be one and only one starting room");
+        }
+
+        private void Start()
+        {
             ShowRoom(_rooms.First(x => x.IsStartingRoom));
         }
 
