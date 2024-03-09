@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e181bb0c4a4451d40b2fa402e3d5906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdBlack: 0.2
+  holdBlack: 0.3
   crossfade: {fileID: 2100000, guid: 39f058efd8067904baccde3351786249, type: 2}
 --- !u!114 &1446578972
 MonoBehaviour:
@@ -1111,10 +1111,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1446578969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27ed4e9beade34848ae293349439d03d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7344e3a715f06374484441ba9a367fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDuration: 0.8
+  transitionDuration: 0.6
   transitionStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1128,7 +1128,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1137,7 +1137,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1446578971}
-        m_TargetAssemblyTypeName: Crossfade, Assembly-CSharp
+        m_TargetAssemblyTypeName: NSFWMiniJam3.World.Crossfade, Assembly-CSharp
         m_MethodName: TransitionEnd
         m_Mode: 1
         m_Arguments:
@@ -1152,7 +1152,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1446578971}
-        m_TargetAssemblyTypeName: Crossfade, Assembly-CSharp
+        m_TargetAssemblyTypeName: NSFWMiniJam3.World.Crossfade, Assembly-CSharp
         m_MethodName: OnTransitionProgress
         m_Mode: 0
         m_Arguments:
@@ -1394,7 +1394,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1446578972}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.Transition, Assembly-CSharp
+        m_TargetAssemblyTypeName: NSFWMiniJam3.World.TransitionManager, Assembly-CSharp
         m_MethodName: StartTransition
         m_Mode: 3
         m_Arguments:
