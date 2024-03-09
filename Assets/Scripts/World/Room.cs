@@ -11,7 +11,7 @@ namespace NSFWMiniJam3.World
 
         private void Awake()
         {
-            foreach (var door in GetComponentsInChildren<Door>())
+            foreach (var door in GetComponentsInChildren<IRoomOwned>())
             {
                 door.ParentRoom = this;
             }

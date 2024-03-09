@@ -60,7 +60,7 @@ namespace NSFWMiniJam3
         {
             if (value.performed && _interactionTarget != null)
             {
-
+                _interactionTarget.Interaction.Interact();
             }
         }
 
