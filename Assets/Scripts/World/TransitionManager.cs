@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace NSFWMiniJam3.World
 {
-    public class Transition : MonoBehaviour
+    public class TransitionManager : MonoBehaviour
     {
         [Range(0.0f, 2)] public float transitionDuration = 0.6f;
 

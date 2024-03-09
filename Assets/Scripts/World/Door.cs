@@ -8,8 +8,9 @@ namespace NSFWMiniJam3.World
     {
         [SerializeField]
         private Node _destination;
-        public UnityEvent enterDoorEvent;
-        
+        [SerializeField]
+        private UnityEvent enterDoorEvent;
+
         private PlayerController _lastSeenPlayerController;
 
         public void Interact(PlayerController pc)

@@ -6,8 +6,8 @@ namespace NSFWMiniJam3.World
 {
     public class Crossfade : MonoBehaviour
     {
-        [Range(0, 0.99f)] public float holdBlack = 0.2f;
-        public Material crossfade;
+        [SerializeField][Range(0, 0.99f)] private float holdBlack = 0.2f;
+        [SerializeField] private Material crossfade;
 
         private float _progressMultiplier => 1f / (1 - holdBlack);
 
