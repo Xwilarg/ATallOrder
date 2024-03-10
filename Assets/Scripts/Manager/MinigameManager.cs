@@ -1,5 +1,6 @@
 ﻿using NSFWMiniJam3.SO;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NSFWMiniJam3.Manager
 {
@@ -9,7 +10,7 @@ namespace NSFWMiniJam3.Manager
 
         public NpcInfo CombatNPC;
 
-        [SerializeField] private SpriteRenderer backgroundSprite;
+        [SerializeField] private Image backgroundSprite;
 
         [SerializeField] private GameObject npcGameObject;
 
