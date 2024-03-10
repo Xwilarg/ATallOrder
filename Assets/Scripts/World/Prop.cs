@@ -26,11 +26,11 @@ namespace NSFWMiniJam3.World
             _sr.sprite = info == null ? _free : _busy;
         }
 
-        public Npc SpawnNpc()
+        public Npc SpawnNpc(PlayerController pc)
         {
             Assert.IsNotNull(HiddenNpc);
 
-            var go = Instantiate(AssetManager.Instance.NpcPrefab, transform.position, Quaternion.identity);
+            var go = Instantiate(AssetManager.Instance.NpcPrefab, new(transform.position.x, pc.transform.position.y, 0f), Quaternion.identity);
             go.GetComponent<SpriteRenderer>().sprite = HiddenNpc.GameSprite;
             return go.GetComponent<Npc>();
         }
@@ -39,13 +39,13 @@ namespace NSFWMiniJam3.World
         {
             if (HiddenNpc != null)
             {
-                SpawnNpc();
+                SpawnNpc(pc);
 
                 MinigameManager.Instance.Play(HiddenNpc);
             }
             else
             {
-                ParentRoom.FailHideCheck();
+                ParentRoom.FailHideCheck(pc);
             }
         }
     }

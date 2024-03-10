@@ -32,7 +32,7 @@ namespace NSFWMiniJam3.World
         /// <summary>
         /// Code executed when the player look inside an empty object
         /// </summary>
-        public void FailHideCheck()
+        public void FailHideCheck(PlayerController pc)
         {
             foreach (Prop p in _props)
             {
@@ -62,7 +62,7 @@ namespace NSFWMiniJam3.World
 
                     // Make NPC run away
                     RoomsManager.Instance.EnemyRunningAway++;
-                    var npc = p.SpawnNpc();
+                    var npc = p.SpawnNpc(pc);
                     npc.SetDestination(possibleDoors[Random.Range(0, possibleDoors.Length)]);
 
                     // Remove NPC from prop
