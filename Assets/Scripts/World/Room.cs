@@ -41,13 +41,14 @@ namespace NSFWMiniJam3.World
                     var info = p.HiddenNpc;
 
                     // Get another free room
-                    var freeRoom = RoomsManager.Instance.GetRandomAvailableRoom();
+                    var freeRoom = RoomsManager.Instance.GetRandomAvailableRoom(this);
                     if (freeRoom == null)
                     {
                         Debug.LogWarning($"No other room found, staying hidden...");
                         continue;
                     }
 
+                    // Get path to the room
                     var possibleDoors = RoomsManager.Instance.GetDoorTo(this, freeRoom);
 
                     if (!possibleDoors.Any())
@@ -56,8 +57,15 @@ namespace NSFWMiniJam3.World
                         continue;
                     }
 
+                    // Hide NPC
+                    freeRoom.RandomProp.SetHide(info);
+
+                    // Make NPC run away
+                    RoomsManager.Instance.EnemyRunningAway++;
+                    var npc = p.SpawnNpc();
+                    npc.SetDestination(possibleDoors[Random.Range(0, possibleDoors.Length)]);
+
                     // Remove NPC from prop
-                    p.SpawnNpc();
                     p.SetHide(null);
                 }
             }

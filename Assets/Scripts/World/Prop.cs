@@ -26,12 +26,13 @@ namespace NSFWMiniJam3.World
             _sr.sprite = info == null ? _free : _busy;
         }
 
-        public void SpawnNpc()
+        public Npc SpawnNpc()
         {
             Assert.IsNotNull(HiddenNpc);
 
             var go = Instantiate(AssetManager.Instance.NpcPrefab, transform.position, Quaternion.identity);
             go.GetComponent<SpriteRenderer>().sprite = HiddenNpc.GameSprite;
+            return go.GetComponent<Npc>();
         }
 
         public void Interact(PlayerController pc)

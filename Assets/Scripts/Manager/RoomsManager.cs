@@ -16,7 +16,7 @@ namespace NSFWMiniJam3.Manager
 
         private Room[] _rooms;
 
-        public bool IsEnemyRunningAway { set; get; }
+        public int EnemyRunningAway { set; get; }
 
         private void Awake()
         {
@@ -33,7 +33,7 @@ namespace NSFWMiniJam3.Manager
 
             foreach (var npc in _npcs)
             {
-                var r = GetRandomAvailableRoom();
+                var r = GetRandomAvailableRoom(null);
                 if (r != null)
                 {
                     r.RandomProp.SetHide(npc);
@@ -70,9 +70,14 @@ namespace NSFWMiniJam3.Manager
                 .ToArray();
         }
 
-        public Room GetRandomAvailableRoom()
+        /// <summary>
+        /// Get a room where we can hide
+        /// It means that there are props to hide and no one is hiding inside already
+        /// </summary>
+        /// <param name="ignore">Room that can't be returned</param>
+        public Room GetRandomAvailableRoom(Room ignore)
         {
-            var availableRooms = _rooms.Where(x => x.CanHideInRoom).ToArray();
+            var availableRooms = _rooms.Where(x => x.CanHideInRoom && x != ignore).ToArray();
             if (availableRooms.Any())
             {
                 return availableRooms[Random.Range(0, availableRooms.Length)];
