@@ -1994,6 +1994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7344e3a715f06374484441ba9a367fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vCam: {fileID: 627881750}
   transitionDuration: 0.8
 --- !u!1 &2126422935
 GameObject:

@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 namespace NSFWMiniJam3.World
@@ -6,11 +7,14 @@ namespace NSFWMiniJam3.World
     {
         public static TransitionManager Instance { private set; get; }
 
+        [SerializeField]
+        private CinemachineVirtualCamera _vCam;
+
+        [Range(0.0f, 2)][SerializeField] private float transitionDuration = 0.6f;
+
+        private System.Action<CinemachineVirtualCamera> _transitionEndCallback;
+
         private ShaderTransition _shaderTransition;
-
-        [Range(0.0f, 2)] [SerializeField] private float transitionDuration = 0.6f;
-
-        private System.Action _transitionEndCallback;
 
         private float midDuration => transitionDuration / 2f;
         private bool transitionHappening = false;
@@ -20,9 +24,12 @@ namespace NSFWMiniJam3.World
         // from range [0, 1]
         // 0 - screen is visible
         // 1 - screen is not visible
-        private float veilProgress {
-            get {
-                if (timeIsBeforeRoomChange) {
+        private float veilProgress
+        {
+            get
+            {
+                if (timeIsBeforeRoomChange)
+                {
                     return transitionTime / midDuration;
                 }
                 return 1 - ((transitionTime - midDuration) / midDuration);
@@ -30,7 +37,8 @@ namespace NSFWMiniJam3.World
         }
 
         // function called to start transition
-        public void StartTransition(System.Action callback) {
+        public void StartTransition(System.Action<CinemachineVirtualCamera> callback)
+        {
             _transitionEndCallback = callback;
 
             transitionHappening = true;
@@ -48,9 +56,11 @@ namespace NSFWMiniJam3.World
             HandleHappeningTransition();
         }
 
-        private void HandleHappeningTransition() {
+        private void HandleHappeningTransition()
+        {
             // returning if there is no transition happening
-            if (!transitionHappening) {
+            if (!transitionHappening)
+            {
                 return;
             }
 
@@ -58,13 +68,15 @@ namespace NSFWMiniJam3.World
 
             transitionTime += Time.deltaTime;
 
-            if (transitionTime > midDuration && timeIsBeforeRoomChange) {
-                _transitionEndCallback?.Invoke();
+            if (transitionTime > midDuration && timeIsBeforeRoomChange)
+            {
+                _transitionEndCallback?.Invoke(_vCam);
                 timeIsBeforeRoomChange = false;
             }
 
             // checking if transition is over
-            if (transitionTime > transitionDuration) {
+            if (transitionTime > transitionDuration)
+            {
                 _shaderTransition.TransitionEnd();
                 transitionHappening = false;
                 timeIsBeforeRoomChange = true;
