@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AttackPoint : MonoBehaviour
+namespace NSFWMiniJam3.Combat
 {
-    [SerializeField] Transform innerCircle;
-    [SerializeField] float attackSpeed = 1f;
-
-    private void Start()
+    public class AttackPoint : MonoBehaviour
     {
-        innerCircle.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-    }
+        [SerializeField] Transform innerCircle;
+        [SerializeField] float attackSpeed = 1f;
 
-    private void Update()
-    {
-        innerCircle.GetComponent<RectTransform>().sizeDelta += new Vector2(10, 10) * Time.deltaTime * attackSpeed;
-    }
+        private void Start()
+        {
+            innerCircle.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
+        }
 
-    public void MouseClicked()
-    {
-        Destroy(gameObject);
+        private void Update()
+        {
+            innerCircle.GetComponent<RectTransform>().sizeDelta += new Vector2(10, 10) * Time.deltaTime * attackSpeed;
+        }
+
+        public void MouseClicked()
+        {
+            Destroy(gameObject);
+        }
     }
 }

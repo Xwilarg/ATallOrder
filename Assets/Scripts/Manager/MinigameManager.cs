@@ -14,9 +14,16 @@ namespace NSFWMiniJam3.Manager
 
         [SerializeField] private GameObject npcGameObject;
 
+        [SerializeField] private Transform AttackHolder;
+
         private void Awake()
         {
             Instance = this;
+        }
+
+        private void Start()
+        {
+            Play(CombatNPC);
         }
 
         public bool IsPlaying { set; get; }
@@ -25,7 +32,15 @@ namespace NSFWMiniJam3.Manager
         public void Play(NpcInfo info)
         {
             IsPlaying = true; // Set that back to false once it's done!
-            Debug.LogWarning("TODO: Make actual code");
+
+            CombatNPC = info;
+            npcGameObject.GetComponent<Image>().sprite = CombatNPC.GameSprite;
+            npcGameObject.GetComponent<Animator>().runtimeAnimatorController = CombatNPC.CharacterAnimator;
+
+            GameObject ago = Instantiate(CombatNPC.AttackPatterns[0].gameObject, AttackHolder);
+
+            ago.transform.position = npcGameObject.transform.position;
+            ago.SetActive(true);
         }
     }
 }

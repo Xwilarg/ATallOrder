@@ -2,28 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackPattern : MonoBehaviour
+namespace NSFWMiniJam3.Combat
 {
-    [SerializeField] float attackDelay;
-    [SerializeField] GameObject[] attackPointArray;
-
-    // Start is called before the first frame update
-    void Start()
+    public class AttackPattern : MonoBehaviour
     {
-        StartCoroutine("AttackSequence");
-    }
+        [SerializeField] GameObject attackPoint_ref;
 
-    IEnumerator AttackSequence()
-    {
-        foreach(GameObject ap in attackPointArray)
+        [SerializeField] float attackDelay;
+        [SerializeField] PointSpawns[] attackPointArray;
+
+        // Start is called before the first frame update
+        void OnEnable()
         {
-            yield return new WaitForSeconds(attackDelay);
-            GameObject newAP = Instantiate(ap, this.transform);
-
-            newAP.SetActive(true);
+            StartCoroutine("AttackSequence");
         }
 
-        StartCoroutine("AttackSequence");
+        IEnumerator AttackSequence()
+        {
+            foreach (PointSpawns ap in attackPointArray)
+            {
+                yield return new WaitForSeconds(attackDelay);
+                GameObject newAP = Instantiate(attackPoint_ref, this.transform);
 
+                newAP.SetActive(true);
+                newAP.transform.position = new Vector2(ap.x * Screen.width, ap.y * Screen.height);
+            }
+
+            StartCoroutine("AttackSequence");
+
+        }
+    }
+
+    [System.Serializable]
+    public struct PointSpawns
+    {
+        public float x;
+        public float y;
     }
 }

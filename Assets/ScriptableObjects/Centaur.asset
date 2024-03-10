@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79706dac89b5184a8fc9f52dc665553, type: 3}
+  m_Name: Centaur
+  m_EditorClassIdentifier: 
+  CharacterName: Centaur
+  GameSprite: {fileID: 21300000, guid: 84b51d67f79cb374eb557b239a818334, type: 3}
+  CharacterAnimator: {fileID: 9100000, guid: baccd25155305ef48b492db7df2c8b62, type: 2}
+  AttackPatterns:
+  - {fileID: 119537980293606914, guid: 67e944b1d08a61b4185491d5fdb0143a, type: 3}
+  StatBlock:
+    Health: 0
+    AttackSpeed: 0
+    Defense: 0
+    Power: 0
