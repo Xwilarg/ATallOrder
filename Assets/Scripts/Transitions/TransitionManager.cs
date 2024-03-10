@@ -1,28 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace NSFWMiniJam3.World
 {
     public class TransitionManager : MonoBehaviour
     {
-        [Range(0.0f, 2)] public float transitionDuration = 0.6f;
+        public static TransitionManager Instance { private set; get; }
 
-        public UnityEvent transitionStart;
-        [System.Serializable]
-        public class RoomChangeEvent : UnityEvent<int> {}
-        public RoomChangeEvent roomChangeEvent;
-        public UnityEvent transitionEnd;
-        [System.Serializable]
-        public class ProgressUpdateEvent : UnityEvent<float> {}
-        public ProgressUpdateEvent progressUpdateEvent;
+        private ShaderTransition _shaderTransition;
+
+        [Range(0.0f, 2)] [SerializeField] private float transitionDuration = 0.6f;
+
+        private System.Action _transitionEndCallback;
 
         private float midDuration => transitionDuration / 2f;
         private bool transitionHappening = false;
         private bool timeIsBeforeRoomChange = true;
         private float transitionTime = 0;
-        private int next_room_id = -1;
 
         // from range [0, 1]
         // 0 - screen is visible
@@ -37,14 +30,20 @@ namespace NSFWMiniJam3.World
         }
 
         // function called to start transition
-        public void StartTransition(int idOfNextRoom=-1) {
-            next_room_id = idOfNextRoom;
+        public void StartTransition(System.Action callback) {
+            _transitionEndCallback = callback;
+
             transitionHappening = true;
-            transitionStart?.Invoke();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Awake()
+        {
+            Instance = this;
+
+            _shaderTransition = GetComponent<ShaderTransition>();
+        }
+
+        private void Update()
         {
             HandleHappeningTransition();
         }
@@ -55,22 +54,22 @@ namespace NSFWMiniJam3.World
                 return;
             }
 
-            progressUpdateEvent?.Invoke(veilProgress);
+            _shaderTransition.OnTransitionProgress(veilProgress);
 
             transitionTime += Time.deltaTime;
 
             if (transitionTime > midDuration && timeIsBeforeRoomChange) {
-                roomChangeEvent?.Invoke(next_room_id);
+                _transitionEndCallback?.Invoke();
                 timeIsBeforeRoomChange = false;
             }
 
             // checking if transition is over
             if (transitionTime > transitionDuration) {
-                transitionEnd?.Invoke();
+                _shaderTransition.TransitionEnd();
                 transitionHappening = false;
                 timeIsBeforeRoomChange = true;
                 transitionTime = 0;
-                next_room_id = -1;
+                _transitionEndCallback = null;
             }
         }
     }

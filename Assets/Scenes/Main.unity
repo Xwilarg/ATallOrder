@@ -895,21 +895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 1770968620}
-  enterDoorEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1446578972}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.TransitionManager, Assembly-CSharp
-        m_MethodName: StartTransition
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!58 &836082300
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1314,8 +1299,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446578970}
-  - component: {fileID: 1446578972}
-  - component: {fileID: 1446578973}
   m_Layer: 0
   m_Name: Rooms
   m_TagString: Untagged
@@ -1340,81 +1323,6 @@ Transform:
   - {fileID: 1603236162}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1446578972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1446578969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7344e3a715f06374484441ba9a367fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionDuration: 0.8
-  transitionStart:
-    m_PersistentCalls:
-      m_Calls: []
-  roomChangeEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1671580561}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.Door, Assembly-CSharp
-        m_MethodName: ChangeRoom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  transitionEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1446578973}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.ShaderTransition, Assembly-CSharp
-        m_MethodName: TransitionEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  progressUpdateEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1446578973}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.ShaderTransition, Assembly-CSharp
-        m_MethodName: OnTransitionProgress
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1446578973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1446578969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a929a468585cd7840b6b155e97e04191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdBlack: 0.1
-  _shader: {fileID: 2100000, guid: a201bc1b20fef0e488f6f9edc1889d82, type: 2}
 --- !u!1 &1603236161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,21 +1553,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 496124118}
-  enterDoorEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1446578972}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.TransitionManager, Assembly-CSharp
-        m_MethodName: StartTransition
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1752457812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +1791,8 @@ GameObject:
   - component: {fileID: 2040772143}
   - component: {fileID: 2040772144}
   - component: {fileID: 2040772145}
+  - component: {fileID: 2040772148}
+  - component: {fileID: 2040772147}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2073,6 +1968,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437f86a29e8cf154dabb59308c525369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2040772147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040772140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a929a468585cd7840b6b155e97e04191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdBlack: 0.1
+  _shader: {fileID: 2100000, guid: a201bc1b20fef0e488f6f9edc1889d82, type: 2}
+--- !u!114 &2040772148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040772140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7344e3a715f06374484441ba9a367fdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionDuration: 0.8
 --- !u!1 &2126422935
 GameObject:
   m_ObjectHideFlags: 0
