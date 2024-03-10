@@ -7,6 +7,12 @@ namespace NSFWMiniJam3.Manager
     {
         public static MinigameManager Instance { private set; get; }
 
+        public NpcInfo CombatNPC;
+
+        [SerializeField] private SpriteRenderer backgroundSprite;
+
+        [SerializeField] private GameObject npcGameObject;
+
         private void Awake()
         {
             Instance = this;
