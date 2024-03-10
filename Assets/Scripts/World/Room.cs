@@ -10,6 +10,7 @@ namespace NSFWMiniJam3.World
         private bool _startingRoom;
 
         private Prop[] _props;
+        public Door[] Doors { private set; get; }
 
         public bool CanHideInRoom => _props.Any() && _props.All(x => x.HiddenNpc == null);
 
@@ -19,11 +20,12 @@ namespace NSFWMiniJam3.World
 
         private void Awake()
         {
-            foreach (var door in GetComponentsInChildren<IRoomOwned>())
+            foreach (var ro in GetComponentsInChildren<IRoomOwned>())
             {
-                door.ParentRoom = this;
+                ro.ParentRoom = this;
             }
 
+            Doors = GetComponentsInChildren<Door>();
             _props = GetComponentsInChildren<Prop>();
         }
 

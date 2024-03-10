@@ -1,5 +1,6 @@
 ﻿using NSFWMiniJam3.SO;
 using NSFWMiniJam3.World;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -38,6 +39,11 @@ namespace NSFWMiniJam3.Manager
                     r.RandomProp.SetHide(npc);
                 }
             }
+        }
+
+        private List<Door> GetDoorTo(Room current, Room destination)
+        {
+            return null; // TODO
         }
 
         public Room GetRandomAvailableRoom()
