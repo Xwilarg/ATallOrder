@@ -2,15 +2,19 @@
 
 namespace NSFWMiniJam3.SO
 {
+    /// <summary>
+    /// NPC INFO - All pertinant information for a single character in combat
+    /// Animators, sprites, 
+    /// </summary>
     [CreateAssetMenu(menuName = "ScriptableObject/NpcInfo", fileName = "NpcInfo")]
     public class NpcInfo : ScriptableObject
     {
 
-        public string characterName;
+        public string CharacterName;
         public Sprite GameSprite;
 
-        public Attack[] attackPatterns;
-        public Stats stats;
+        public Attack[] AttackPatterns;
+        public Stats StatBlock;
 
     }
 
