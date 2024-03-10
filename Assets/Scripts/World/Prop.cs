@@ -1,6 +1,7 @@
 ﻿using NSFWMiniJam3.Manager;
 using NSFWMiniJam3.SO;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace NSFWMiniJam3.World
 {
@@ -25,12 +26,19 @@ namespace NSFWMiniJam3.World
             _sr.sprite = info == null ? _free : _busy;
         }
 
+        public void SpawnNpc()
+        {
+            Assert.IsNotNull(HiddenNpc);
+
+            var go = Instantiate(AssetManager.Instance.NpcPrefab, transform.position, Quaternion.identity);
+            go.GetComponent<SpriteRenderer>().sprite = HiddenNpc.GameSprite;
+        }
+
         public void Interact(PlayerController pc)
         {
             if (HiddenNpc != null)
             {
-                var go = Instantiate(AssetManager.Instance.NpcPrefab, transform.position, Quaternion.identity);
-                go.GetComponent<SpriteRenderer>().sprite = HiddenNpc.GameSprite;
+                SpawnNpc();
 
                 MinigameManager.Instance.Play(HiddenNpc);
             }

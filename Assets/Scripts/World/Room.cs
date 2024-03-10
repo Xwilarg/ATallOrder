@@ -31,7 +31,19 @@ namespace NSFWMiniJam3.World
         /// </summary>
         public void FailHideCheck()
         {
-            // TODO
+            foreach (Prop p in _props)
+            {
+                if (p.HiddenNpc != null)
+                {
+                    var info = p.HiddenNpc;
+                    p.SpawnNpc();
+
+                    // Remove NPC from prop
+                    p.SetHide(null);
+
+                    // TODO
+                }
+            }
         }
     }
 }

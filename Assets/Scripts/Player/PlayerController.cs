@@ -1,3 +1,4 @@
+using NSFWMiniJam3.Manager;
 using NSFWMiniJam3.SO;
 using NSFWMiniJam3.World;
 using UnityEngine;
@@ -26,7 +27,8 @@ namespace NSFWMiniJam3
 
         private void FixedUpdate()
         {
-            _rb.velocity = new(_movX * _info.Speed, _rb.velocity.y);
+            var x = GameManager.Instance.CanMove ? _movX * _info.Speed : 0f;
+            _rb.velocity = new(x, _rb.velocity.y);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

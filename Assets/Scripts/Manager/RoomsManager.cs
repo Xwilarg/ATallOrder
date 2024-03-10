@@ -15,6 +15,8 @@ namespace NSFWMiniJam3.Manager
 
         private Room[] _rooms;
 
+        public bool IsEnemyRunningAway { set; get; }
+
         private void Awake()
         {
             Instance = this;

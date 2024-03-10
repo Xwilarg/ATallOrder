@@ -12,9 +12,12 @@ namespace NSFWMiniJam3.Manager
             Instance = this;
         }
 
+        public bool IsPlaying { set; get; }
+
 
         public void Play(NpcInfo info)
         {
+            IsPlaying = true; // Set that back to false once it's done!
             Debug.LogWarning("TODO: Make actual code");
         }
     }
