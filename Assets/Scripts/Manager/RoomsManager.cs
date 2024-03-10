@@ -41,9 +41,33 @@ namespace NSFWMiniJam3.Manager
             }
         }
 
-        private List<Door> GetDoorTo(Room current, Room destination)
+        private bool CheckDoorAccess(Room current, Room destination, List<Room> path)
         {
-            return null; // TODO
+            if (current == destination)
+            {
+                return true;
+            }
+
+            foreach (var room in current.Doors.Select(x => x.ParentRoom).Where(x => !path.Any(p => p.gameObject.GetInstanceID() == x.gameObject.GetInstanceID()))) // Assume 2 doors don't go to the same room
+            {
+                List<Room> newPath = new();
+                newPath.AddRange(path);
+                newPath.Add(room);
+
+                if (CheckDoorAccess(room, destination, newPath))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public Door[] GetDoorTo(Room current, Room destination)
+        {
+            return current.Doors
+                .Where(x => CheckDoorAccess(x.ParentRoom, destination, new() { x.ParentRoom }))
+                .ToArray();
         }
 
         public Room GetRandomAvailableRoom()

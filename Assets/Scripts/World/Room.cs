@@ -44,7 +44,15 @@ namespace NSFWMiniJam3.World
                     var freeRoom = RoomsManager.Instance.GetRandomAvailableRoom();
                     if (freeRoom == null)
                     {
-                        Debug.LogWarning("No other room found, staying hidden...");
+                        Debug.LogWarning($"No other room found, staying hidden...");
+                        continue;
+                    }
+
+                    var possibleDoors = RoomsManager.Instance.GetDoorTo(this, freeRoom);
+
+                    if (!possibleDoors.Any())
+                    {
+                        Debug.LogWarning($"No path found to go from {name} to {freeRoom.name}, staying hidden...");
                         continue;
                     }
 
