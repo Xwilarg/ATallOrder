@@ -379,7 +379,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.13830996, g: 0.13830996, b: 0.13830996, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1062,7 +1062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446578970}
   - component: {fileID: 1446578972}
-  - component: {fileID: 1446578971}
+  - component: {fileID: 1446578973}
   m_Layer: 0
   m_Name: Rooms
   m_TagString: Untagged
@@ -1087,20 +1087,6 @@ Transform:
   - {fileID: 1603236162}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1446578971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1446578969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e181bb0c4a4451d40b2fa402e3d5906e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdBlack: 0.3
-  crossfade: {fileID: 2100000, guid: 39f058efd8067904baccde3351786249, type: 2}
 --- !u!114 &1446578972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,7 +1099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7344e3a715f06374484441ba9a367fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDuration: 0.6
+  transitionDuration: 0.8
   transitionStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1135,8 +1121,8 @@ MonoBehaviour:
   transitionEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1446578971}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.Crossfade, Assembly-CSharp
+      - m_Target: {fileID: 1446578973}
+        m_TargetAssemblyTypeName: NSFWMiniJam3.World.ShaderTransition, Assembly-CSharp
         m_MethodName: TransitionEnd
         m_Mode: 1
         m_Arguments:
@@ -1150,8 +1136,8 @@ MonoBehaviour:
   progressUpdateEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1446578971}
-        m_TargetAssemblyTypeName: NSFWMiniJam3.World.Crossfade, Assembly-CSharp
+      - m_Target: {fileID: 1446578973}
+        m_TargetAssemblyTypeName: NSFWMiniJam3.World.ShaderTransition, Assembly-CSharp
         m_MethodName: OnTransitionProgress
         m_Mode: 0
         m_Arguments:
@@ -1162,6 +1148,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1446578973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446578969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a929a468585cd7840b6b155e97e04191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdBlack: 0.1
+  _shader: {fileID: 2100000, guid: a201bc1b20fef0e488f6f9edc1889d82, type: 2}
 --- !u!1 &1603236161
 GameObject:
   m_ObjectHideFlags: 0
