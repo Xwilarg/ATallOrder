@@ -50,3 +50,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: FrontProp
+    uniqueID: 2989669937
+    locked: 0
