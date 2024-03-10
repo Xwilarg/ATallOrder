@@ -25,5 +25,13 @@ namespace NSFWMiniJam3.World
 
             _props = GetComponentsInChildren<Prop>();
         }
+
+        /// <summary>
+        /// Code executed when the player look inside an empty object
+        /// </summary>
+        public void FailHideCheck()
+        {
+            // TODO
+        }
     }
 }

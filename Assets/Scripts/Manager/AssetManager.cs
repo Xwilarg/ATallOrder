@@ -9,5 +9,10 @@ namespace NSFWMiniJam3.Manager
         [SerializeField]
         private GameObject _npcPrefab;
         public GameObject NpcPrefab => _npcPrefab;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
     }
 }

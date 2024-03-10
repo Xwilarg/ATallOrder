@@ -1,11 +1,13 @@
-﻿using NSFWMiniJam3.SO;
+﻿using NSFWMiniJam3.Manager;
+using NSFWMiniJam3.SO;
 using UnityEngine;
 
 namespace NSFWMiniJam3.World
 {
-    public class Prop : MonoBehaviour, IInteractable
+    public class Prop : MonoBehaviour, IInteractable, IRoomOwned
     {
         public NpcInfo HiddenNpc { private set; get; }
+        public Room ParentRoom { set; private get; }
 
         [SerializeField]
         private Sprite _free, _busy;
@@ -25,7 +27,15 @@ namespace NSFWMiniJam3.World
 
         public void Interact(PlayerController pc)
         {
-            throw new System.NotImplementedException();
+            if (HiddenNpc != null)
+            {
+                var go = Instantiate(AssetManager.Instance.NpcPrefab, transform.position, Quaternion.identity);
+                go.GetComponent<SpriteRenderer>().sprite = HiddenNpc.GameSprite;
+            }
+            else
+            {
+                ParentRoom.FailHideCheck();
+            }
         }
     }
 }
