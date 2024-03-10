@@ -7,6 +7,8 @@ namespace NSFWMiniJam3.SO
     {
 
         public string characterName;
+        public Sprite GameSprite;
+
         public Attack[] attackPatterns;
         public Stats stats;
 
@@ -19,5 +21,6 @@ namespace NSFWMiniJam3.SO
         public float AttackSpeed;
         public float Defense;
         public float Power;
+        public Sprite GameSprite;
     }
 }

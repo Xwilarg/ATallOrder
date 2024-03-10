@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace NSFWMiniJam3.World
 {
-    public class Crossfade : MonoBehaviour
+    public class ShaderTransition : MonoBehaviour
     {
         [SerializeField][Range(0, 0.99f)] private float holdBlack = 0.2f;
-        [SerializeField] private Material crossfade;
+        [SerializeField] private Material _shader;
 
         private float _progressMultiplier => 1f / (1 - holdBlack);
 
@@ -20,7 +20,7 @@ namespace NSFWMiniJam3.World
         }
 
         private void SetProgress(float veilProgress) {
-            crossfade.SetFloat("_Progress", veilProgress * _progressMultiplier);
+            _shader.SetFloat("_Progress", veilProgress * _progressMultiplier);
         }
     }
 }
