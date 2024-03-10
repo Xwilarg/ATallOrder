@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d79706dac89b5184a8fc9f52dc665553, type: 3}
-  m_Name: SampleNpc
+  m_Name: Troll
   m_EditorClassIdentifier: 
   GameSprite: {fileID: 21300000, guid: 4b1b6e6b83e8b7e45ad21ad65f3e4bcd, type: 3}
