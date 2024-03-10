@@ -48,7 +48,7 @@ namespace NSFWMiniJam3.Manager
                 return true;
             }
 
-            foreach (var room in current.Doors.Select(x => x.ParentRoom).Where(x => !path.Any(p => p.gameObject.GetInstanceID() == x.gameObject.GetInstanceID()))) // Assume 2 doors don't go to the same room
+            foreach (var room in current.Doors.Select(x => x.Destination).Where(x => !path.Any(p => p.gameObject.GetInstanceID() == x.gameObject.GetInstanceID()))) // Assume 2 doors don't go to the same room
             {
                 List<Room> newPath = new();
                 newPath.AddRange(path);
@@ -66,7 +66,7 @@ namespace NSFWMiniJam3.Manager
         public Door[] GetDoorTo(Room current, Room destination)
         {
             return current.Doors
-                .Where(x => CheckDoorAccess(x.ParentRoom, destination, new() { x.ParentRoom }))
+                .Where(x => CheckDoorAccess(x.Destination, destination, new() { x.Destination }))
                 .ToArray();
         }
 

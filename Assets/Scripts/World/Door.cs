@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace NSFWMiniJam3.World
 {
-    public class Door : MonoBehaviour, IInteractable, IRoomOwned
+    public class Door : MonoBehaviour, IInteractable
     {
         [SerializeField]
         private Node _destination;
@@ -13,7 +13,7 @@ namespace NSFWMiniJam3.World
 
         private PlayerController _lastSeenPlayerController;
 
-        public Room ParentRoom { set; get; }
+        public Room Destination => _destination.ParentRoom;
 
         public void Interact(PlayerController pc)
         {
