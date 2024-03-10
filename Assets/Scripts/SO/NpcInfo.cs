@@ -11,9 +11,12 @@ namespace NSFWMiniJam3.SO
     {
 
         public string CharacterName;
-        public Sprite GameSprite;
 
-        public AttackPattern[] AttackPatterns;
+        public Sprite GameSprite;
+        public RuntimeAnimatorController CharacterAnimator;
+
+        public Combat.AttackPattern[] AttackPatterns;
+        
         public Stats StatBlock;
 
     }
