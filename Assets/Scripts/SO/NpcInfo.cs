@@ -21,6 +21,5 @@ namespace NSFWMiniJam3.SO
         public float AttackSpeed;
         public float Defense;
         public float Power;
-        public Sprite GameSprite;
     }
 }
