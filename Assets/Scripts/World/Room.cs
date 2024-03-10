@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using NSFWMiniJam3.Manager;
+using System.Linq;
 using UnityEngine;
 
 namespace NSFWMiniJam3.World
@@ -36,12 +37,18 @@ namespace NSFWMiniJam3.World
                 if (p.HiddenNpc != null)
                 {
                     var info = p.HiddenNpc;
-                    p.SpawnNpc();
+
+                    // Get another free room
+                    var freeRoom = RoomsManager.Instance.GetRandomAvailableRoom();
+                    if (freeRoom == null)
+                    {
+                        Debug.LogWarning("No other room found, staying hidden...");
+                        continue;
+                    }
 
                     // Remove NPC from prop
+                    p.SpawnNpc();
                     p.SetHide(null);
-
-                    // TODO
                 }
             }
         }

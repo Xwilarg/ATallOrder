@@ -32,13 +32,22 @@ namespace NSFWMiniJam3.Manager
 
             foreach (var npc in _npcs)
             {
-                var availableRooms = _rooms.Where(x => x.CanHideInRoom).ToArray();
-                if (availableRooms.Any())
+                var r = GetRandomAvailableRoom();
+                if (r != null)
                 {
-                    var r = availableRooms[Random.Range(0, availableRooms.Length)];
                     r.RandomProp.SetHide(npc);
                 }
             }
+        }
+
+        public Room GetRandomAvailableRoom()
+        {
+            var availableRooms = _rooms.Where(x => x.CanHideInRoom).ToArray();
+            if (availableRooms.Any())
+            {
+                return availableRooms[Random.Range(0, availableRooms.Length)];
+            }
+            return null;
         }
 
         public void ShowRoom(Room r)
