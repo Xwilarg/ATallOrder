@@ -13,7 +13,7 @@ namespace NSFWMiniJam3.SO
         public string CharacterName;
         public Sprite GameSprite;
 
-        public Attack[] AttackPatterns;
+        public AttackPattern[] AttackPatterns;
         public Stats StatBlock;
 
     }

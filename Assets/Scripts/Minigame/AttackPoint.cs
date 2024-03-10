@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class AttackPoint : MonoBehaviour
 {
     [SerializeField] Transform innerCircle;
-    [SerializeField] float attackSpeed = 1;
+    [SerializeField] float attackSpeed = 1f;
 
     private void Start()
     {
-        innerCircle.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+        innerCircle.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
     }
 
     private void Update()
@@ -20,6 +20,6 @@ public class AttackPoint : MonoBehaviour
 
     public void MouseClicked()
     {
-        innerCircle.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+        Destroy(gameObject);
     }
 }

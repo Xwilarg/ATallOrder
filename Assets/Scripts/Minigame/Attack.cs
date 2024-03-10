@@ -3,6 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class Attack
 {
-    public GameObject AttackPoints; //single prefab with children
+    public AttackPoint[] AttackPoints;
     public int AttackPower;
+    public float DelayBetweenPoints;
 }
