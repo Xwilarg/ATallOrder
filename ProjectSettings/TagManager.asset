@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Prop
+    uniqueID: 2493980951
+    locked: 0
   - name: NPC
     uniqueID: 2166319361
     locked: 0
