@@ -8,7 +8,8 @@ namespace NSFWMiniJam3.Manager
     {
         public static MinigameManager Instance { private set; get; }
 
-        public NpcInfo CombatNPC;
+        [SerializeField]
+        private GameObject _fightContainer;
 
         [SerializeField] private Image backgroundSprite;
 
@@ -21,11 +22,6 @@ namespace NSFWMiniJam3.Manager
             Instance = this;
         }
 
-        private void Start()
-        {
-            Play(CombatNPC);
-        }
-
         public bool IsPlaying { set; get; }
 
 
@@ -33,14 +29,15 @@ namespace NSFWMiniJam3.Manager
         {
             IsPlaying = true; // Set that back to false once it's done!
 
-            CombatNPC = info;
-            npcGameObject.GetComponent<Image>().sprite = CombatNPC.GameSprite;
-            npcGameObject.GetComponent<Animator>().runtimeAnimatorController = CombatNPC.CharacterAnimator;
+            npcGameObject.GetComponent<Image>().sprite = info.GameSprite;
+            npcGameObject.GetComponent<Animator>().runtimeAnimatorController = info.CharacterAnimator;
 
-            GameObject ago = Instantiate(CombatNPC.AttackPatterns[0].gameObject, AttackHolder);
+            GameObject ago = Instantiate(info.AttackPatterns[0].gameObject, AttackHolder);
 
             ago.transform.position = npcGameObject.transform.position;
             ago.SetActive(true);
+
+            _fightContainer.SetActive(true);
         }
     }
 }
