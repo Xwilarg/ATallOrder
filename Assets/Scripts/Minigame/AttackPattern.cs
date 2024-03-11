@@ -9,7 +9,7 @@ namespace NSFWMiniJam3.Combat
         [SerializeField] GameObject attackPoint_ref;
 
         [SerializeField] float attackDelay;
-        [SerializeField] PointSpawns[] attackPointArray;
+        [SerializeField] SO.PointSpawns[] attackPointArray;
 
         // Start is called before the first frame update
         void OnEnable()
@@ -19,7 +19,7 @@ namespace NSFWMiniJam3.Combat
 
         IEnumerator AttackSequence()
         {
-            foreach (PointSpawns ap in attackPointArray)
+            foreach (SO.PointSpawns ap in attackPointArray)
             {
                 yield return new WaitForSeconds(attackDelay);
                 GameObject newAP = Instantiate(attackPoint_ref, this.transform);
@@ -31,12 +31,5 @@ namespace NSFWMiniJam3.Combat
             StartCoroutine("AttackSequence");
 
         }
-    }
-
-    [System.Serializable]
-    public struct PointSpawns
-    {
-        public float x;
-        public float y;
     }
 }
