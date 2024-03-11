@@ -15,7 +15,8 @@ namespace NSFWMiniJam3.Manager
 
         [SerializeField] private GameObject npcGameObject;
 
-        [SerializeField] private Transform AttackHolder;
+        [SerializeField] private Transform attackHolder;
+        [SerializeField] private GameObject attackPointRef;
 
         private void Awake()
         {
@@ -31,11 +32,6 @@ namespace NSFWMiniJam3.Manager
 
             npcGameObject.GetComponent<Image>().sprite = info.GameSprite;
             npcGameObject.GetComponent<Animator>().runtimeAnimatorController = info.CharacterAnimator;
-
-            GameObject ago = Instantiate(info.AttackPatterns[0].gameObject, AttackHolder);
-
-            ago.transform.position = npcGameObject.transform.position;
-            ago.SetActive(true);
 
             _fightContainer.SetActive(true);
         }
