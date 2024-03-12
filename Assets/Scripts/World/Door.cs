@@ -11,6 +11,8 @@ namespace NSFWMiniJam3.World
 
         public Room Destination => _destination.ParentRoom;
 
+        public string InteractionKey => "enter";
+
         public void Interact(PlayerController pc)
         {
             TransitionManager.Instance.StartTransition((CinemachineVirtualCamera vCam) =>

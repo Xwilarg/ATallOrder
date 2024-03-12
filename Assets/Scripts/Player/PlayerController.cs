@@ -1,6 +1,7 @@
 using NSFWMiniJam3.Manager;
 using NSFWMiniJam3.SO;
 using NSFWMiniJam3.World;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,7 @@ namespace NSFWMiniJam3
         private PlayerInfo _info;
 
         [SerializeField]
-        private GameObject _interactionHint;
+        private TMP_Text _interactionHint;
 
         private Rigidbody2D _rb;
 
@@ -35,7 +36,8 @@ namespace NSFWMiniJam3
         {
             if (collision.TryGetComponent<IInteractable>(out var comp))
             {
-                _interactionHint.SetActive(true);
+                _interactionHint.gameObject.SetActive(true);
+                _interactionHint.text = $"'E' to {comp.InteractionKey}";
                 _interactionTarget = new()
                 {
                     Interaction = comp,
@@ -48,7 +50,7 @@ namespace NSFWMiniJam3
         {
             if (_interactionTarget != null && _interactionTarget.ID == collision.gameObject.GetInstanceID())
             {
-                _interactionHint.SetActive(false);
+                _interactionHint.gameObject.SetActive(false);
                 _interactionTarget = null;
             }
         }

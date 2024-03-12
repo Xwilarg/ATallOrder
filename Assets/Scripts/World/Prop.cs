@@ -35,6 +35,8 @@ namespace NSFWMiniJam3.World
             return go.GetComponent<Npc>();
         }
 
+        public string InteractionKey => "search";
+
         public void Interact(PlayerController pc)
         {
             if (HiddenNpc != null)

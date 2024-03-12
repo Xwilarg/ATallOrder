@@ -3,5 +3,7 @@
     public interface IInteractable
     {
         void Interact(PlayerController pc);
+
+        public string InteractionKey { get; }
     }
 }

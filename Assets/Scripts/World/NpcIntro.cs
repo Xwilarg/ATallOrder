@@ -8,6 +8,8 @@ namespace NSFWMiniJam3.World
         [SerializeField]
         private TextAsset _introText;
 
+        public string InteractionKey => "speak";
+
         public void Interact(PlayerController _)
         {
             DialogueManager.Instance.ShowStory(transform.position, _introText);
