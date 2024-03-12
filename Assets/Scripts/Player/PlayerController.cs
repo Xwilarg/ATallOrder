@@ -72,7 +72,7 @@ namespace NSFWMiniJam3
                 {
                     DialogueManager.Instance.DisplayNextDialogue();
                 }
-                else if (_interactionHint != null)
+                else if (GameManager.Instance.CanMove && _interactionHint != null)
                 {
                     _interactionTarget.Interaction.Interact(this);
                 }
