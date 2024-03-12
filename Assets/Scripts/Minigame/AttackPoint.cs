@@ -6,13 +6,16 @@ namespace NSFWMiniJam3.Combat
     public class AttackPoint : MonoBehaviour
     {
         [SerializeField] Transform innerCircle;
-        [SerializeField] float attackSpeed = 1f;
+        float attackSpeed = 1f;
 
         private float _timer = 0f;
 
-        private void Start()
+        private RectTransform _circleRt;
+
+        private void Awake()
         {
-            innerCircle.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
+            _circleRt = innerCircle.GetComponent<RectTransform>();
+            _circleRt.localScale = Vector2.zero;
         }
 
         private void Update()
@@ -26,7 +29,7 @@ namespace NSFWMiniJam3.Combat
             }
             else
             {
-                innerCircle.GetComponent<RectTransform>().sizeDelta = Vector2.one * _timer;
+                _circleRt.localScale = Vector2.one * _timer;
             }
         }
 

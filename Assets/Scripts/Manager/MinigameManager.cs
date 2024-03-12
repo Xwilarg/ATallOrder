@@ -86,7 +86,6 @@ namespace NSFWMiniJam3.Manager
                 foreach (PointSpawns point in p.attackPointArray)
                 {
                     yield return new WaitForSeconds(p.attackDelay);
-                    Debug.Log(p.attackDelay);
                     GameObject newAP = Instantiate(attackPointRef, attackHolder);
 
                     newAP.SetActive(true);
