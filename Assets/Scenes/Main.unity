@@ -7004,7 +7004,8 @@ MonoBehaviour:
   _fightContainer: {fileID: 1006621435}
   backgroundSprite: {fileID: 1217632501}
   npcGameObject: {fileID: 1913914769}
-  AttackHolder: {fileID: 977851563}
+  attackHolder: {fileID: 0}
+  attackPointRef: {fileID: 2567127129595856341, guid: 29588810b6bdd334292d1f6c3761b78b, type: 3}
 --- !u!114 &2040772145
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,6 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a826812635e18524986c5ee16395c5b2, type: 2}
   StatBlock:
     Health: 0
-    AttackSpeed: 0
+    AttackSpeed: 5
     Defense: 0
     Power: 0
