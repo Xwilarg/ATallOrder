@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
+
+    AudioSource _audioSource;
+
+    [SerializeField] MusicClip[] musicLibrary;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _audioSource = GetComponentInChildren<AudioSource>();
+        PlayMusic("exploration");
     }
+
+    public void PlayMusic(string music)
+    {
+
+        foreach(MusicClip mc in musicLibrary)
+        {
+            if(mc.musicName == music)
+            {
+                _audioSource.clip = mc.musicFile;
+                _audioSource.Play();
+                break;
+            }
+        }
+    }
+
+    [System.Serializable]
+    public struct MusicClip
+    {
+        public string musicName;
+        public AudioClip musicFile;
+    }
+
 }
