@@ -11,7 +11,7 @@ namespace NSFWMiniJam3.World
 
         public void Interact(PlayerController pc)
         {
-            MinigameManager.Instance.Play(_info);
+            MinigameManager.Instance.Play(_info, null, null);
         }
         public string InteractionKey => "speak";
     }

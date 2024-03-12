@@ -43,7 +43,15 @@ namespace NSFWMiniJam3.World
             {
                 SpawnNpc(pc);
 
-                MinigameManager.Instance.Play(HiddenNpc);
+                MinigameManager.Instance.Play(HiddenNpc,
+                    onLoose: () =>
+                    {
+
+                    },
+                    onWin: () =>
+                    {
+
+                    });
             }
             else
             {

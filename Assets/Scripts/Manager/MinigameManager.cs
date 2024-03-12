@@ -1,4 +1,5 @@
 ﻿using NSFWMiniJam3.SO;
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -34,10 +35,14 @@ namespace NSFWMiniJam3.Manager
 
         int _atcksLeft;
 
+        private Action _onLoose, _onWin;
 
-        public void Play(NpcInfo info)
+        public void Play(NpcInfo info, Action onWin, Action onLoose)
         {
-            IsPlaying = true; // Set that back to false once it's done!
+            IsPlaying = true;
+
+            _onLoose = onLoose;
+            _onWin = onWin;
 
             npcInfo = info;
             npcGameObject.GetComponent<Image>().sprite = info.GameSprite;
@@ -47,8 +52,8 @@ namespace NSFWMiniJam3.Manager
 
             _score = 0;
 
-            int atckCount = 5;
-            var atcks = Enumerable.Repeat(new object(), atckCount).Select(x => npcInfo.attackPatterns[Random.Range(0, npcInfo.attackPatterns.Length)]).ToArray();
+            int atckCount = 3;
+            var atcks = Enumerable.Repeat(new object(), atckCount).Select(x => npcInfo.attackPatterns[UnityEngine.Random.Range(0, npcInfo.attackPatterns.Length)]).ToArray();
 
             _atcksLeft = atcks.Sum(x => x.attackPointArray.Length);
 
@@ -66,11 +71,11 @@ namespace NSFWMiniJam3.Manager
 
                 if (_score >= 0)
                 {
-                    // Win
+                    _onWin?.Invoke();
                 }
                 else
                 {
-                    // Loose
+                    _onLoose?.Invoke();
                 }
             }
         }

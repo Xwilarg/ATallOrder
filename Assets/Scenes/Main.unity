@@ -3111,6 +3111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _introText: {fileID: 4900000, guid: ddb2430605db8be469a3e06aaba5efe2, type: 3}
+  _introTwiceText: {fileID: 4900000, guid: 6640ed6d7bc290c4795414b0d3dc6134, type: 3}
 --- !u!1 &1217632499
 GameObject:
   m_ObjectHideFlags: 0
