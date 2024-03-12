@@ -41,28 +41,31 @@ namespace NSFWMiniJam3.Manager
 
             _fightContainer.SetActive(true);
 
-            StartCoroutine("NPCAttack");
+            StartCoroutine(NPCAttack(5));
         }
 
-        IEnumerator NPCAttack()
+        IEnumerator NPCAttack(int attackCount)
         {
-            yield return new WaitForSeconds(npcInfo.StatBlock.AttackSpeed);
-
-            IsNPCAttacking = true;
-
-            //get a pattern, cycle through it, instantiate attack points (with offset)
-            PatternInfo patternInfo = npcInfo.attackPatterns[Random.Range(0, npcInfo.attackPatterns.Length)];
-
-            foreach(PointSpawns point in patternInfo.attackPointArray)
+            for (int i = 0; i < attackCount; i++)
             {
-                yield return new WaitForSeconds(patternInfo.attackDelay);
-                GameObject newAP = Instantiate(attackPointRef, attackHolder);
+                yield return new WaitForSeconds(npcInfo.StatBlock.AttackSpeed);
 
-                newAP.SetActive(true);
-                newAP.transform.position = new Vector2(point.x * Screen.width, point.y * Screen.height);
+                IsNPCAttacking = true;
+
+                //get a pattern, cycle through it, instantiate attack points (with offset)
+                PatternInfo patternInfo = npcInfo.attackPatterns[Random.Range(0, npcInfo.attackPatterns.Length)];
+
+                foreach (PointSpawns point in patternInfo.attackPointArray)
+                {
+                    yield return new WaitForSeconds(patternInfo.attackDelay);
+                    GameObject newAP = Instantiate(attackPointRef, attackHolder);
+
+                    newAP.SetActive(true);
+                    newAP.transform.position = new Vector2(point.x * Screen.width, point.y * Screen.height);
+                }
             }
 
-            StartCoroutine("NPCAttack");
+            // TODO: Victory / Defeat(?)
         }
     }
 }
