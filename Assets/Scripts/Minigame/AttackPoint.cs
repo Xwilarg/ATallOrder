@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using NSFWMiniJam3.Manager;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace NSFWMiniJam3.Combat
 {
@@ -10,6 +8,8 @@ namespace NSFWMiniJam3.Combat
         [SerializeField] Transform innerCircle;
         [SerializeField] float attackSpeed = 1f;
 
+        private float _timer = 0f;
+
         private void Start()
         {
             innerCircle.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
@@ -17,11 +17,22 @@ namespace NSFWMiniJam3.Combat
 
         private void Update()
         {
-            innerCircle.GetComponent<RectTransform>().sizeDelta += new Vector2(10, 10) * Time.deltaTime * attackSpeed;
+            _timer += Time.deltaTime * attackSpeed;
+
+            if (_timer >= 1f)
+            {
+                MinigameManager.Instance.UpdateScore(-1);
+                Destroy(gameObject);
+            }
+            else
+            {
+                innerCircle.GetComponent<RectTransform>().sizeDelta = Vector2.one * _timer;
+            }
         }
 
         public void MouseClicked()
         {
+            MinigameManager.Instance.UpdateScore(_timer >= .75f ? 1 : -1);
             Destroy(gameObject);
         }
     }

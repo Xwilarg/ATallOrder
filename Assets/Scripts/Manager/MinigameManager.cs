@@ -1,6 +1,6 @@
-﻿using NSFWMiniJam3.Combat;
-using NSFWMiniJam3.SO;
+﻿using NSFWMiniJam3.SO;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +22,8 @@ namespace NSFWMiniJam3.Manager
 
         private NpcInfo npcInfo;
 
+        private int _score;
+
         private void Awake()
         {
             Instance = this;
@@ -29,6 +31,8 @@ namespace NSFWMiniJam3.Manager
 
         public bool IsPlaying { set; get; }
         public bool IsNPCAttacking { get; private set; }
+
+        int _atcksLeft;
 
 
         public void Play(NpcInfo info)
@@ -41,31 +45,55 @@ namespace NSFWMiniJam3.Manager
 
             _fightContainer.SetActive(true);
 
-            StartCoroutine(NPCAttack(5));
+            _score = 0;
+
+            int atckCount = 5;
+            var atcks = Enumerable.Repeat(new object(), atckCount).Select(x => npcInfo.attackPatterns[Random.Range(0, npcInfo.attackPatterns.Length)]).ToArray();
+
+            _atcksLeft = atcks.Sum(x => x.attackPointArray.Length);
+
+            StartCoroutine(NPCAttack(atcks));
         }
 
-        IEnumerator NPCAttack(int attackCount)
+        public void UpdateScore(int val)
         {
-            for (int i = 0; i < attackCount; i++)
+            _score += val;
+
+            _atcksLeft--;
+            if (_atcksLeft == 0)
+            {
+                IsPlaying = false;
+
+                if (_score >= 0)
+                {
+                    // Win
+                }
+                else
+                {
+                    // Loose
+                }
+            }
+        }
+
+        IEnumerator NPCAttack(PatternInfo[] patterns)
+        {
+            foreach (var p in patterns)
             {
                 yield return new WaitForSeconds(npcInfo.StatBlock.AttackSpeed);
 
                 IsNPCAttacking = true;
 
                 //get a pattern, cycle through it, instantiate attack points (with offset)
-                PatternInfo patternInfo = npcInfo.attackPatterns[Random.Range(0, npcInfo.attackPatterns.Length)];
 
-                foreach (PointSpawns point in patternInfo.attackPointArray)
+                foreach (PointSpawns point in p.attackPointArray)
                 {
-                    yield return new WaitForSeconds(patternInfo.attackDelay);
+                    yield return new WaitForSeconds(p.attackDelay);
                     GameObject newAP = Instantiate(attackPointRef, attackHolder);
 
                     newAP.SetActive(true);
                     newAP.transform.position = new Vector2(point.x * Screen.width, point.y * Screen.height);
                 }
             }
-
-            // TODO: Victory / Defeat(?)
         }
     }
 }
