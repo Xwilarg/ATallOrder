@@ -23,3 +23,6 @@ MonoBehaviour:
     AttackSpeed: 5
     Defense: 0
     Power: 0
+  Intro: {fileID: 4900000, guid: e337b038d8f76cf4ab551315d071b873, type: 3}
+  OnPlayerWin: {fileID: 4900000, guid: 646781a9ebed1864db33a87a49fab59e, type: 3}
+  OnPlayerLoose: {fileID: 4900000, guid: 1afa74d8cd467354db5723096cd5339b, type: 3}

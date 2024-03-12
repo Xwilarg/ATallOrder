@@ -1,5 +1,6 @@
 using Ink.Runtime;
 using NSFWMiniJam3.Dialogue;
+using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace NSFWMiniJam3.Manager
         private GameObject _choicePrefab;
 
         private Story _story;
+
+        private Action _onDone;
 
         public bool IsPlayingStory => _container.activeInHierarchy;
 
@@ -60,11 +63,12 @@ namespace NSFWMiniJam3.Manager
             _choiceContainer.gameObject.SetActive(true);
         }
 
-        public void ShowStory(Vector2 refPos, TextAsset asset)
+        public void ShowStory(Vector2 refPos, TextAsset asset, Action onDone = null)
         {
-            _container.transform.position = new(refPos.x - 2f, refPos.y + 4f);
-
             Debug.Log($"[STORY] Playing {asset.name}");
+
+            _container.transform.position = new(refPos.x - 2f, refPos.y + 4f);
+            _onDone = onDone;
             _story = new(asset.text);
             ResetVN();
             DisplayStory(_story.Continue());
@@ -107,6 +111,7 @@ namespace NSFWMiniJam3.Manager
             else if (!_story.canContinue && !_story.currentChoices.Any())
             {
                 _container.SetActive(false);
+                _onDone?.Invoke();
             }
         }
     }

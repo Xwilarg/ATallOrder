@@ -9,7 +9,6 @@ namespace NSFWMiniJam3.SO
     [CreateAssetMenu(menuName = "ScriptableObject/NpcInfo", fileName = "NpcInfo")]
     public class NpcInfo : ScriptableObject
     {
-
         public string CharacterName;
 
         public Sprite GameSprite;
@@ -18,6 +17,8 @@ namespace NSFWMiniJam3.SO
         public PatternInfo[] attackPatterns;
         
         public Stats StatBlock;
+
+        public TextAsset Intro, OnPlayerWin, OnPlayerLoose;
 
     }
 
