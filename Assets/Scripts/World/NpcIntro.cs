@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using NSFWMiniJam3.Manager;
+using UnityEngine;
 
 namespace NSFWMiniJam3.World
 {
     public class NpcIntro : MonoBehaviour, IInteractable
     {
-        public void Interact(PlayerController pc)
+        [SerializeField]
+        private TextAsset _introText;
+
+        public void Interact(PlayerController _)
         {
-            throw new System.NotImplementedException();
+            DialogueManager.Instance.ShowStory(transform.position, _introText);
         }
     }
 }

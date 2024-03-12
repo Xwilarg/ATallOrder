@@ -62,9 +62,16 @@ namespace NSFWMiniJam3
 
         public void OnUse(InputAction.CallbackContext value)
         {
-            if (value.performed && _interactionTarget != null)
+            if (value.performed)
             {
-                _interactionTarget.Interaction.Interact(this);
+                if (DialogueManager.Instance.IsPlayingStory)
+                {
+                    DialogueManager.Instance.DisplayNextDialogue();
+                }
+                else if (_interactionHint != null)
+                {
+                    _interactionTarget.Interaction.Interact(this);
+                }
             }
         }
 
