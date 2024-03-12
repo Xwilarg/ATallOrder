@@ -79,8 +79,6 @@ namespace NSFWMiniJam3.Manager
         {
             foreach (var p in patterns)
             {
-                yield return new WaitForSeconds(npcInfo.StatBlock.AttackSpeed);
-
                 IsNPCAttacking = true;
 
                 //get a pattern, cycle through it, instantiate attack points (with offset)
@@ -88,11 +86,14 @@ namespace NSFWMiniJam3.Manager
                 foreach (PointSpawns point in p.attackPointArray)
                 {
                     yield return new WaitForSeconds(p.attackDelay);
+                    Debug.Log(p.attackDelay);
                     GameObject newAP = Instantiate(attackPointRef, attackHolder);
 
                     newAP.SetActive(true);
                     newAP.transform.position = new Vector2(point.x * Screen.width, point.y * Screen.height);
                 }
+
+                yield return new WaitForSeconds(npcInfo.StatBlock.AttackSpeed);
             }
         }
     }
