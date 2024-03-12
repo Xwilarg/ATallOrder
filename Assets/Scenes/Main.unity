@@ -3772,6 +3772,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7462708804531558612, guid: 42469e09e78b86d4a978500ec242aefd, type: 3}
+      propertyPath: _requireKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462708804531558612, guid: 42469e09e78b86d4a978500ec242aefd, type: 3}
       propertyPath: _destination
       value: 
       objectReference: {fileID: 1304948019}
@@ -8319,6 +8323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _npcPrefab: {fileID: 598123438832899601, guid: fe1f3d7e0f76abc44868aca2172ac90f, type: 3}
+  _doorLocked: {fileID: 4900000, guid: ca41f2859df1e734db1ecdfb22030f30, type: 3}
 --- !u!114 &2040772146
 MonoBehaviour:
   m_ObjectHideFlags: 0

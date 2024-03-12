@@ -9,24 +9,34 @@ namespace NSFWMiniJam3.World
         [SerializeField]
         private Node _destination;
 
+        [SerializeField]
+        private bool _requireKey;
+
         public Room Destination => _destination.ParentRoom;
 
         public string InteractionKey => "enter";
 
         public void Interact(PlayerController pc)
         {
-            TransitionManager.Instance.StartTransition((CinemachineVirtualCamera vCam) =>
+            if (_requireKey && !pc.HasKey)
             {
-                RoomsManager.Instance.ShowRoom(_destination.ParentRoom);
+                DialogueManager.Instance.ShowStory(pc.transform.position, AssetManager.Instance.DoorLocked);
+            }
+            else
+            {
+                TransitionManager.Instance.StartTransition((CinemachineVirtualCamera vCam) =>
+                {
+                    RoomsManager.Instance.ShowRoom(_destination.ParentRoom);
 
-                var localPos = pc.transform.localPosition;
-                pc.transform.parent = _destination.ParentRoom.transform;
-                pc.transform.position = _destination.transform.position;
-                pc.transform.localPosition = new(pc.transform.localPosition.x, localPos.y, 0f);
+                    var localPos = pc.transform.localPosition;
+                    pc.transform.parent = _destination.ParentRoom.transform;
+                    pc.transform.position = _destination.transform.position;
+                    pc.transform.localPosition = new(pc.transform.localPosition.x, localPos.y, 0f);
 
-                var composer = vCam.GetCinemachineComponent<CinemachineTransposer>();
-                vCam.ForceCameraPosition(new(pc.transform.position.x, pc.transform.position.y + composer.m_FollowOffset.y, vCam.transform.position.z), vCam.transform.rotation);
-            });
+                    var composer = vCam.GetCinemachineComponent<CinemachineTransposer>();
+                    vCam.ForceCameraPosition(new(pc.transform.position.x, pc.transform.position.y + composer.m_FollowOffset.y, vCam.transform.position.z), vCam.transform.rotation);
+                });
+            }
         }
 
         private void OnDrawGizmos()

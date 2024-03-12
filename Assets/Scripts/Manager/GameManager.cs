@@ -11,6 +11,6 @@ namespace NSFWMiniJam3.Manager
             Instance = this;
         }
 
-        public bool CanMove => RoomsManager.Instance.EnemyRunningAway == 0 && !MinigameManager.Instance.IsPlaying;
+        public bool CanMove => RoomsManager.Instance.EnemyRunningAway == 0 && !MinigameManager.Instance.IsPlaying && !DialogueManager.Instance.IsPlayingStory;
     }
 }

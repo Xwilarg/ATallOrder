@@ -10,6 +10,10 @@ namespace NSFWMiniJam3.Manager
         private GameObject _npcPrefab;
         public GameObject NpcPrefab => _npcPrefab;
 
+        [SerializeField]
+        private TextAsset _doorLocked;
+        public TextAsset DoorLocked => _doorLocked;
+
         private void Awake()
         {
             Instance = this;

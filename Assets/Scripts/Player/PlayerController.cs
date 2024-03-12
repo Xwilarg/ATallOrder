@@ -21,6 +21,8 @@ namespace NSFWMiniJam3
 
         private InteractionTarget _interactionTarget;
 
+        public bool HasKey { set; get; }
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();

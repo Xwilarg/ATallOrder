@@ -10,8 +10,9 @@ namespace NSFWMiniJam3.World
 
         public string InteractionKey => "speak";
 
-        public void Interact(PlayerController _)
+        public void Interact(PlayerController pc)
         {
+            pc.HasKey = true;
             DialogueManager.Instance.ShowStory(transform.position, _introText);
         }
     }
