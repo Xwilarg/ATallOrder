@@ -9,6 +9,8 @@ namespace NSFWMiniJam3.World
         [SerializeField]
         private NpcInfo _info;
 
+        private Animator _anim;
+
         public bool IsDowned { private set; get; }
 
         // Target data
@@ -18,6 +20,7 @@ namespace NSFWMiniJam3.World
 
         private void Awake()
         {
+            _anim = GetComponent<Animator>();
             _iniPos = transform.position;
         }
 
@@ -39,6 +42,16 @@ namespace NSFWMiniJam3.World
                     transform.position = Vector2.Lerp(_iniPos, dest, _movTimer);
                 }
             }
+        }
+
+        public void NakedAnim()
+        {
+            _anim.SetTrigger("GetNaked");
+        }
+
+        public void RunAnim()
+        {
+            _anim.SetTrigger("Run");
         }
 
         public void SetDestination(Door d)

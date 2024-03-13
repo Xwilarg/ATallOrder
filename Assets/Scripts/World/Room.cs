@@ -63,6 +63,7 @@ namespace NSFWMiniJam3.World
                     // Make NPC run away
                     RoomsManager.Instance.EnemyRunningAway++;
                     var npc = p.SpawnNpc(pc);
+                    npc.RunAnim();
                     npc.SetDestination(possibleDoors[Random.Range(0, possibleDoors.Length)]);
 
                     // Remove NPC from prop
