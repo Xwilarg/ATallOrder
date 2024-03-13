@@ -41,7 +41,7 @@ namespace NSFWMiniJam3.World
         {
             if (HiddenNpc != null)
             {
-                var go = SpawnNpc(pc);
+                var go = SpawnNpc(pc).gameObject;
                 DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.Intro, () =>
                 {
                     MinigameManager.Instance.Play(HiddenNpc,

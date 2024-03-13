@@ -36,7 +36,11 @@ namespace NSFWMiniJam3.Manager
                 var r = GetRandomAvailableRoom(null);
                 if (r != null)
                 {
-                    r.RandomProp.SetHide(npc);
+                    var prop = r.RandomProp;
+#if UNITY_EDITOR
+                    Debug.Log($"{npc.CharacterName} is hiding at {r.name} in {prop.name}");
+#endif
+                    prop.SetHide(npc);
                 }
             }
         }
