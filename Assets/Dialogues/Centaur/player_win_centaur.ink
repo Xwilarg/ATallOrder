@@ -5,7 +5,6 @@
 Ugh, you...have bested me. I concede to you.
 Tsk, to think I would fall like this, and to one so heinously lecherous as you.
 You may have conquered me in combat, but you will never control my prideful spirit!
-Do what you will with me! Strip me of my garments and leave me exposed to the cold air!
 I will remain strong in my conviction, even if you use your strong, vile hands to touch me where you wish and play with my body as you see fit.
 So go ahead! Do what you will with me! Strip me of my garments! Leave me exposed to the cold night air!
 Put a bit in my mouth and spank my flank! Call me your good little breed mare!
