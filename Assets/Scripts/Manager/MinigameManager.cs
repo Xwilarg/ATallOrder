@@ -21,6 +21,11 @@ namespace NSFWMiniJam3.Manager
         [SerializeField] private Transform attackHolder;
         [SerializeField] private GameObject attackPointRef;
 
+        [SerializeField]
+        private RectTransform _playerProg, _bossProg;
+
+        private const float _barMult = 10f;
+
         private NpcInfo npcInfo;
 
         private int _score;
@@ -65,6 +70,11 @@ namespace NSFWMiniJam3.Manager
             _score += val;
 
             _atcksLeft--;
+
+            var p = (_score + _barMult / 2f) / _barMult;
+            _playerProg.localScale = new(Mathf.Clamp01(p), 1f, 1f);
+            _bossProg.localScale = new(Mathf.Clamp01(1f - p), 1f, 1f);
+
             if (_atcksLeft == 0)
             {
                 _fightContainer.SetActive(false);
