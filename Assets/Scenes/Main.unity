@@ -5457,6 +5457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _npcPrefab: {fileID: 598123438832899601, guid: fe1f3d7e0f76abc44868aca2172ac90f, type: 3}
   _doorLocked: {fileID: 4900000, guid: ca41f2859df1e734db1ecdfb22030f30, type: 3}
+  _propEmpty: {fileID: 4900000, guid: a820baf728bdcfb4a830eb2a95b49d2c, type: 3}
 --- !u!114 &2040772146
 MonoBehaviour:
   m_ObjectHideFlags: 0

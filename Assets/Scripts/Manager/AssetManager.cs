@@ -14,6 +14,10 @@ namespace NSFWMiniJam3.Manager
         private TextAsset _doorLocked;
         public TextAsset DoorLocked => _doorLocked;
 
+        [SerializeField]
+        private TextAsset _propEmpty;
+        public TextAsset PropEmpty => _propEmpty;
+
         private void Awake()
         {
             Instance = this;

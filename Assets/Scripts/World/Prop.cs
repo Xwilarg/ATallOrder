@@ -71,6 +71,7 @@ namespace NSFWMiniJam3.World
             else
             {
                 ParentRoom.FailHideCheck(pc);
+                DialogueManager.Instance.ShowStory(transform.position, AssetManager.Instance.PropEmpty, null);
             }
         }
     }
