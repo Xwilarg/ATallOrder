@@ -21,6 +21,7 @@ namespace NSFWMiniJam3.World
         private void Awake()
         {
             _anim = GetComponent<Animator>();
+            _anim.runtimeAnimatorController = _info.WorldAnimator;
             _iniPos = transform.position;
         }
 
