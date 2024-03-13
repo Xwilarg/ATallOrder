@@ -1,3 +1,3 @@
-Text when player loose against the NPC
+Done already? Find me as a better warrior.
 
 -> END

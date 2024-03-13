@@ -18,6 +18,7 @@ MonoBehaviour:
   attackPatterns:
   - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}
   - {fileID: 11400000, guid: a826812635e18524986c5ee16395c5b2, type: 2}
+  - {fileID: 11400000, guid: afc4ef2a70a319b43a89ff75eff9f760, type: 2}
   StatBlock:
     Health: 0
     AttackSpeed: 5

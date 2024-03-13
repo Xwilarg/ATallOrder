@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Troll
   GameSprite: {fileID: 21300000, guid: 4b1b6e6b83e8b7e45ad21ad65f3e4bcd, type: 3}
-  AttackPatterns:
-  - AttackPoints:
-    - {fileID: 0}
-    AttackPower: 0
-    DelayBetweenPoints: 0
+  CharacterAnimator: {fileID: 0}
+  attackPatterns:
+  - {fileID: 0}
   StatBlock:
     Health: 0
-    AttackSpeed: 0
+    AttackSpeed: 1
     Defense: 0
     Power: 0
+  Intro: {fileID: 4900000, guid: e337b038d8f76cf4ab551315d071b873, type: 3}
+  OnPlayerWin: {fileID: 4900000, guid: 646781a9ebed1864db33a87a49fab59e, type: 3}
+  OnPlayerLoose: {fileID: 4900000, guid: 1afa74d8cd467354db5723096cd5339b, type: 3}
