@@ -12,7 +12,7 @@ namespace NSFWMiniJam3.SO
         public string CharacterName;
 
         public Sprite GameSprite;
-        public RuntimeAnimatorController CharacterAnimator;
+        public RuntimeAnimatorController FightAnimator;
 
         public PatternInfo[] attackPatterns;
         

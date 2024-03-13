@@ -16,7 +16,7 @@ MonoBehaviour:
   GameSprite: {fileID: 21300000, guid: 4b1b6e6b83e8b7e45ad21ad65f3e4bcd, type: 3}
   CharacterAnimator: {fileID: 0}
   attackPatterns:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}
   StatBlock:
     Health: 0
     AttackSpeed: 1

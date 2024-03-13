@@ -46,7 +46,7 @@ namespace NSFWMiniJam3.Manager
 
             npcInfo = info;
             npcGameObject.GetComponent<Image>().sprite = info.GameSprite;
-            npcGameObject.GetComponent<Animator>().runtimeAnimatorController = info.CharacterAnimator;
+            npcGameObject.GetComponent<Animator>().runtimeAnimatorController = info.FightAnimator;
 
             _fightContainer.SetActive(true);
 
@@ -77,6 +77,8 @@ namespace NSFWMiniJam3.Manager
                 {
                     _onLoose?.Invoke();
                 }
+
+                _fightContainer.SetActive(false);
             }
         }
 
@@ -97,7 +99,7 @@ namespace NSFWMiniJam3.Manager
                     newAP.transform.position = new Vector2(point.x * Screen.width, point.y * Screen.height);
                 }
 
-                yield return new WaitForSeconds(npcInfo.StatBlock.AttackSpeed);
+                yield return new WaitForSeconds(1f); // TODO
             }
         }
     }
