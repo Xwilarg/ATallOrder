@@ -24,7 +24,7 @@ namespace NSFWMiniJam3.Manager
         [SerializeField]
         private RectTransform _playerProg, _bossProg;
 
-        private const float _barMult = 10f;
+        private const float _barMult = 20f;
 
         private NpcInfo npcInfo;
 
