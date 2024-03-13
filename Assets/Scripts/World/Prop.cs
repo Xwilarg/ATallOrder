@@ -1,4 +1,5 @@
-﻿using NSFWMiniJam3.Manager;
+﻿using Cinemachine;
+using NSFWMiniJam3.Manager;
 using NSFWMiniJam3.SO;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -58,7 +59,11 @@ namespace NSFWMiniJam3.World
                             npc.NakedAnim();
                             DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.OnPlayerWin, () =>
                             {
-                                SetHide(null); // TODO: Prevent new enemies to hide there
+                                TransitionManager.Instance.StartTransition((CinemachineVirtualCamera _) =>
+                                {
+                                    SetHide(null);
+                                    Destroy(npc.gameObject);
+                                });
                             });
                         });
                 });
