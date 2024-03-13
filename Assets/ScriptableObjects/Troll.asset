@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Troll
   GameSprite: {fileID: 21300000, guid: 4b1b6e6b83e8b7e45ad21ad65f3e4bcd, type: 3}
-  CharacterAnimator: {fileID: 0}
+  FightAnimator: {fileID: 0}
   attackPatterns:
   - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}
   StatBlock:
@@ -22,6 +22,6 @@ MonoBehaviour:
     AttackSpeed: 1
     Defense: 0
     Power: 0
-  Intro: {fileID: 4900000, guid: e337b038d8f76cf4ab551315d071b873, type: 3}
-  OnPlayerWin: {fileID: 4900000, guid: 646781a9ebed1864db33a87a49fab59e, type: 3}
-  OnPlayerLoose: {fileID: 4900000, guid: 1afa74d8cd467354db5723096cd5339b, type: 3}
+  Intro: {fileID: 4900000, guid: d62edd9398b407748b3143313b27e45b, type: 3}
+  OnPlayerWin: {fileID: 4900000, guid: b11e6deec6c363f459d6bc07b5f8c6e3, type: 3}
+  OnPlayerLoose: {fileID: 4900000, guid: 0eadbdbd071c88a4e8521f5c8225f66f, type: 3}

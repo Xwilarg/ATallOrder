@@ -67,6 +67,7 @@ namespace NSFWMiniJam3.Manager
             _atcksLeft--;
             if (_atcksLeft == 0)
             {
+                _fightContainer.SetActive(false);
                 IsPlaying = false;
 
                 if (_score >= 0)
@@ -77,8 +78,6 @@ namespace NSFWMiniJam3.Manager
                 {
                     _onLoose?.Invoke();
                 }
-
-                _fightContainer.SetActive(false);
             }
         }
 
