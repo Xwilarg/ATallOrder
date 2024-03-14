@@ -6025,7 +6025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicLibrary:
-  - musicName: 0
+  - musicName: 1
     musicFile: {fileID: 8300000, guid: 492fa110d4598af4a9c661befe282c22, type: 3}
   - musicName: 2
     musicFile: {fileID: 8300000, guid: a4560b46b4ebfb9499f0e849f33e8e25, type: 3}

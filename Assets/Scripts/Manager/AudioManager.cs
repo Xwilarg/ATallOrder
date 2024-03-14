@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(SongName music)
     {
+        Debug.Log($"[Music] Launching {music}");
         var clip = musicLibrary.First(x => x.musicName == music);
         _audioSource.clip = clip.musicFile;
         _audioSource.Play();

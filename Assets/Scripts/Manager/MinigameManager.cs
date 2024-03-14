@@ -47,7 +47,7 @@ namespace NSFWMiniJam3.Manager
 
         public bool IsStealingClothes { private set; get; }
         private float _struggleTimer = 0f;
-        private const float _struggleTimerRef = 1f;
+        private const float _struggleTimerRef = .5f;
         private int _struggleCount = 0;
 
         public void Play(NpcInfo info, Action onWin, Action onLoose)
@@ -55,6 +55,7 @@ namespace NSFWMiniJam3.Manager
             IsPlaying = true;
 
             IsStealingClothes = false;
+            _spamInstruction.SetActive(false);
 
             _onLoose = onLoose;
             _onWin = onWin;
@@ -77,23 +78,26 @@ namespace NSFWMiniJam3.Manager
 
         private void Update()
         {
-            _struggleTimer -= Time.deltaTime;
-
-            if (_struggleTimer <= 0f)
+            if (IsStealingClothes)
             {
-                _score--;
+                _struggleTimer -= Time.deltaTime;
 
-                UpdateScoreUI();
-
-                if (_score <= -_barMult)
+                if (_struggleTimer <= 0f)
                 {
-                    EndGame();
-                    _onLoose?.Invoke();
-                }
+                    _score--;
 
-                _struggleCount++;
-                _struggleTimer = _struggleTimerRef - (0.05f * _struggleCount);
-                if (_struggleTimer < .1f) _struggleTimer = .1f;
+                    UpdateScoreUI();
+
+                    if (_score <= -_barMult)
+                    {
+                        EndGame();
+                        _onLoose?.Invoke();
+                    }
+
+                    _struggleCount++;
+                    _struggleTimer = _struggleTimerRef - (0.05f * _struggleCount);
+                    if (_struggleTimer < .1f) _struggleTimer = .1f;
+                }
             }
         }
 
@@ -136,12 +140,16 @@ namespace NSFWMiniJam3.Manager
                 if (_score >= 0)
                 {
                     _spamInstruction.SetActive(true);
-                    IsStealingClothes = true;
                     _score -= Mathf.RoundToInt(_barMult / 2f);
                     UpdateScoreUI();
 
                     _struggleCount = 0;
                     _struggleTimer = _struggleTimerRef;
+
+                    WaitAndDo(1f, () =>
+                    {
+                        IsStealingClothes = true;
+                    });
                 }
                 else
                 {
@@ -149,6 +157,12 @@ namespace NSFWMiniJam3.Manager
                     _onLoose?.Invoke();
                 }
             }
+        }
+
+        IEnumerator WaitAndDo(float timer, Action callback)
+        {
+            yield return new WaitForSeconds(timer);
+            callback();
         }
 
         IEnumerator NPCAttack(PatternInfo[] patterns)
