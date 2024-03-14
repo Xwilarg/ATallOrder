@@ -19,10 +19,10 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponentInChildren<AudioSource>();
-        PlayMusic("exploration");
+        PlayMusic(SongName.Exploration);
     }
 
-    public void PlayMusic(string music)
+    public void PlayMusic(SongName music)
     {
 
         foreach(MusicClip mc in musicLibrary)
@@ -39,8 +39,15 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public struct MusicClip
     {
-        public string musicName;
+        public SongName musicName;
         public AudioClip musicFile;
+    }
+
+    public enum SongName
+    {
+        Menu,
+        Exploration,
+        Combat
     }
 
 }
