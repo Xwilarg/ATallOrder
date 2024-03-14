@@ -156,7 +156,7 @@ namespace NSFWMiniJam3.Manager
                     StartCoroutine(WaitAndDo(1f, () =>
                     {
                         IsStealingClothes = true;
-                    });
+                    }));
                 }
                 else
                 {
