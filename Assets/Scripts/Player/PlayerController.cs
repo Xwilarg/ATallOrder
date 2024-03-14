@@ -72,6 +72,10 @@ namespace NSFWMiniJam3
                 {
                     DialogueManager.Instance.DisplayNextDialogue();
                 }
+                else if (MinigameManager.Instance.IsPlaying && MinigameManager.Instance.IsStealingClothes)
+                {
+                    MinigameManager.Instance.StruggleForCloth();
+                }
                 else if (GameManager.Instance.CanMove && _interactionTarget != null)
                 {
                     _interactionTarget.Interaction.Interact(this);
