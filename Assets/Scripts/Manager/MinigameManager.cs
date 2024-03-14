@@ -78,7 +78,7 @@ namespace NSFWMiniJam3.Manager
 
         private void Update()
         {
-            if (IsStealingClothes)
+            if (IsPlaying && IsStealingClothes)
             {
                 _struggleTimer -= Time.deltaTime;
 
@@ -110,7 +110,7 @@ namespace NSFWMiniJam3.Manager
             if (_score >= _barMult)
             {
                 IsStealingClothes = false;
-                _fightContainer.SetActive(false);
+                _spamInstruction.SetActive(false);
 
                 StartCoroutine(WaitAndDo(1f, () =>
                 {
@@ -142,7 +142,6 @@ namespace NSFWMiniJam3.Manager
 
             if (_atcksLeft == 0)
             {
-
                 if (_score >= 0)
                 {
                     _spamInstruction.SetActive(true);
@@ -151,7 +150,6 @@ namespace NSFWMiniJam3.Manager
 
                     _struggleCount = 0;
                     _struggleTimer = _struggleTimerRef;
-                    _fightContainer.SetActive(false);
 
                     StartCoroutine(WaitAndDo(1f, () =>
                     {
