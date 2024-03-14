@@ -1,3 +1,3 @@
-Loose ogre
+Loose angel
 
 -> END
