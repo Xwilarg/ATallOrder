@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Struggle",
+                    "type": "Button",
+                    "id": "50950328-da6c-4489-9e59-9bd1b442e9eb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -159,12 +168,23 @@
                 },
                 {
                     "name": "",
-                    "id": "afd7ec57-5490-4a04-b8dc-017b6aca74cc",
+                    "id": "d0f817d3-2315-481b-b7e4-95241e01ce8e",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Action",
+                    "action": "Struggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e8fbf81-5178-4ed9-98fe-5d9d802bf7cc",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Struggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

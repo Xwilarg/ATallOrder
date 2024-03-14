@@ -64,6 +64,14 @@ namespace NSFWMiniJam3
             else if (_movX > 0f) _movX = 1f;
         }
 
+        public void OnStruggle(InputAction.CallbackContext value)
+        {
+            if (value.performed && MinigameManager.Instance.IsPlaying && MinigameManager.Instance.IsStealingClothes)
+            {
+                MinigameManager.Instance.StruggleForCloth();
+            }
+        }
+
         public void OnUse(InputAction.CallbackContext value)
         {
             if (value.performed)
@@ -71,10 +79,6 @@ namespace NSFWMiniJam3
                 if (DialogueManager.Instance.IsPlayingStory)
                 {
                     DialogueManager.Instance.DisplayNextDialogue();
-                }
-                else if (MinigameManager.Instance.IsPlaying && MinigameManager.Instance.IsStealingClothes)
-                {
-                    MinigameManager.Instance.StruggleForCloth();
                 }
                 else if (GameManager.Instance.CanMove && _interactionTarget != null)
                 {
