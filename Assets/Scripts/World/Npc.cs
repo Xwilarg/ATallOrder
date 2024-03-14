@@ -45,6 +45,11 @@ namespace NSFWMiniJam3.World
             }
         }
 
+        public void DownAnim()
+        {
+            _anim.SetTrigger("GetDown");
+        }
+
         public void NakedAnim()
         {
             _anim.SetTrigger("GetNaked");

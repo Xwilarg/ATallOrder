@@ -56,13 +56,17 @@ namespace NSFWMiniJam3.World
                         },
                         onWin: () =>
                         {
-                            npc.NakedAnim();
+                            npc.DownAnim();
+                            npc.transform.Translate(Vector3.down);
                             DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.OnPlayerWin, () =>
                             {
                                 TransitionManager.Instance.StartTransition((CinemachineVirtualCamera _) =>
                                 {
                                     SetHide(null);
-                                    Destroy(npc.gameObject);
+                                    npc.NakedAnim();
+                                    var node = GameManager.Instance.NextSpot;
+                                    npc.transform.parent = node.transform;
+                                    npc.transform.position = node.transform.position;
                                 });
                             });
                         });
