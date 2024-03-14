@@ -35,7 +35,7 @@ namespace NSFWMiniJam3.Combat
 
         public void MouseClicked()
         {
-            MinigameManager.Instance.UpdateScore(_timer >= .75f ? 1 : -1);
+            MinigameManager.Instance.UpdateScore(1);
             Destroy(gameObject);
         }
     }
