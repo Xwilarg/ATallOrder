@@ -84,6 +84,8 @@ namespace NSFWMiniJam3.Manager
                 var content = string.Join(' ', s.Skip(1)).ToUpperInvariant();
                 switch (s[0])
                 {
+                    case "speaker": break;
+
                     default:
                         Debug.LogError($"Unknown story key: {s[0]}");
                         break;
