@@ -73,6 +73,8 @@ namespace NSFWMiniJam3.Manager
 
             _atcksLeft = atcks.Sum(x => x.attackPointArray.Length);
 
+            UpdateScoreUI();
+
             StartCoroutine(NPCAttack(atcks));
         }
 
