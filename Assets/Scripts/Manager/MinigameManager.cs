@@ -110,10 +110,9 @@ namespace NSFWMiniJam3.Manager
             if (_score >= _barMult)
             {
                 IsStealingClothes = false;
+                _fightContainer.SetActive(false);
 
-                // TODO: Victory animation
-
-                StartCoroutine(WaitAndDo(2f, () =>
+                StartCoroutine(WaitAndDo(1f, () =>
                 {
                     EndGame();
                     _onWin?.Invoke();
@@ -152,6 +151,7 @@ namespace NSFWMiniJam3.Manager
 
                     _struggleCount = 0;
                     _struggleTimer = _struggleTimerRef;
+                    _fightContainer.SetActive(false);
 
                     StartCoroutine(WaitAndDo(1f, () =>
                     {

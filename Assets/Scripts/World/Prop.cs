@@ -33,6 +33,7 @@ namespace NSFWMiniJam3.World
 
             var go = Instantiate(AssetManager.Instance.NpcPrefab, new(transform.position.x, pc.transform.position.y, 0f), Quaternion.identity);
             go.GetComponent<SpriteRenderer>().sprite = HiddenNpc.GameSprite;
+            go.GetComponent<Npc>().SetInfo(HiddenNpc);   
             return go.GetComponent<Npc>();
         }
 

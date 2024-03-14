@@ -6,7 +6,6 @@ namespace NSFWMiniJam3.World
 {
     public class Npc : MonoBehaviour//, IInteractable
     {
-        [SerializeField]
         private NpcInfo _info;
 
         private Animator _anim;
@@ -21,8 +20,13 @@ namespace NSFWMiniJam3.World
         private void Awake()
         {
             _anim = GetComponent<Animator>();
-            _anim.runtimeAnimatorController = _info.WorldAnimator;
             _iniPos = transform.position;
+        }
+
+        public void SetInfo(NpcInfo info)
+        {
+            _info = info;
+            _anim.runtimeAnimatorController = _info.WorldAnimator;
         }
 
         private void Update()
