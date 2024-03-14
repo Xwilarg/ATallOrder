@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Troll
   m_EditorClassIdentifier: 
   CharacterName: Troll
-  GameSprite: {fileID: 21300000, guid: 4b1b6e6b83e8b7e45ad21ad65f3e4bcd, type: 3}
+  GameSprite: {fileID: 21300000, guid: 3713550d4f5e97243bb988b0ddad2eb4, type: 3}
   FightAnimator: {fileID: 0}
   WorldAnimator: {fileID: 9100000, guid: 535b8137bf1dc704c954f4ec35cd5b19, type: 2}
   attackPatterns:

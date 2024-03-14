@@ -5933,6 +5933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _npcs:
   - {fileID: 11400000, guid: d26a3f81cd709494aa4610cf6decd75b, type: 2}
+  - {fileID: 11400000, guid: c9670a9ca6a4cf5449d1278e907ce122, type: 2}
 --- !u!114 &2040772144
 MonoBehaviour:
   m_ObjectHideFlags: 0

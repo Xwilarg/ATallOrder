@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Centaur_Exploration
+  m_Controller: {fileID: 9100000, guid: 535b8137bf1dc704c954f4ec35cd5b19, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: be189108846899742be397bd8356e029, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1c960894c374d5644b9bbc69739914e8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2fa0d25e42f3e634dbbc312875cdeb65, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 88a439d23393e2f4c9d548c844a29e1c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7632555487f60524f8c69262c96af875, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 52ae5ebd8b14847448ca4e7c721fd6c1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1104e8c867541b34394cfbc1caed3a99, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 69b419f820193bd47a48d2b878f4b69a, type: 2}
