@@ -1,8 +1,6 @@
 //Prideful, but dirty minded
 // Bested in battle
-//
-#speaker:centaur
-Ugh, you...have bested me. I concede to you.
+Ugh, you...have bested me. I concede to you.  #speaker centaur
 Tsk, to think I would fall like this, and to one so heinously lecherous as you.
 You may have conquered me in combat, but you will never control my prideful spirit!
 I will remain strong in my conviction, even if you use your strong, vile hands to touch me where you wish and play with my body as you see fit.

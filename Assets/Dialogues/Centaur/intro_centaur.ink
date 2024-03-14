@@ -1,7 +1,6 @@
 //tags
-#speaker:centaur
 
-Ah, it seems I have been found and caught.
+Ah, it seems I have been found and caught. #speaker centaur
 You are quite a perceptive human to have found me, a trait I can appreciate.
 But pray tell, why do you hunt me with such vigor?
 Perhaps your mind is filled with...indecent thoughts? And, now that you've caught me, you'll...you'll...
