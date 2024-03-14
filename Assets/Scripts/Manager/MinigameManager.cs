@@ -90,7 +90,7 @@ namespace NSFWMiniJam3.Manager
 
                     UpdateScoreUI();
 
-                    if (_score <= -_barMult)
+                    if (_score <= -_barMult / 2f)
                     {
                         EndGame();
                         _onLoose?.Invoke();
@@ -109,7 +109,7 @@ namespace NSFWMiniJam3.Manager
 
             UpdateScoreUI();
 
-            if (_score >= _barMult)
+            if (_score >= _barMult / 2f)
             {
                 IsStealingClothes = false;
                 _spamInstruction.SetActive(false);
