@@ -54,6 +54,8 @@ namespace NSFWMiniJam3.Manager
         {
             IsPlaying = true;
 
+            AudioManager.Instance.PlayMusic(AudioManager.SongName.Combat);
+
             IsStealingClothes = false;
             _spamInstruction.SetActive(false);
 
@@ -126,6 +128,7 @@ namespace NSFWMiniJam3.Manager
         {
             _fightContainer.SetActive(false);
             IsPlaying = false;
+            AudioManager.Instance.PlayMusic(AudioManager.SongName.Exploration);
         }
 
         private void UpdateScoreUI()
