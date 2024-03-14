@@ -91,6 +91,11 @@ namespace NSFWMiniJam3.Manager
             }
         }
 
+        IEnumerator GrabCloth()
+        {
+            yield return null;
+        }
+
         IEnumerator NPCAttack(PatternInfo[] patterns)
         {
             foreach (var p in patterns)
