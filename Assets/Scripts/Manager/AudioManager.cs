@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -10,7 +9,6 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] MusicClip[] musicLibrary;
 
-    // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
@@ -24,16 +22,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(SongName music)
     {
-
-        foreach(MusicClip mc in musicLibrary)
-        {
-            if(mc.musicName == music)
-            {
-                _audioSource.clip = mc.musicFile;
-                _audioSource.Play();
-                break;
-            }
-        }
+        var clip = musicLibrary.First(x => x.musicName == music);
+        _audioSource.clip = clip.musicFile;
+        _audioSource.Play();
     }
 
     [System.Serializable]
