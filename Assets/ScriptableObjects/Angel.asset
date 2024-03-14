@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79706dac89b5184a8fc9f52dc665553, type: 3}
+  m_Name: Angel
+  m_EditorClassIdentifier: 
+  CharacterName: Angel
+  GameSprite: {fileID: 21300000, guid: 930c74a514a762448b189919422a561f, type: 3}
+  FightAnimator: {fileID: 0}
+  WorldAnimator: {fileID: 22100000, guid: 612be9d6f1210f4409a67a73dbb97649, type: 2}
+  attackPatterns:
+  - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}
+  StatBlock:
+    Health: 0
+    AttackSpeed: 1
+    Defense: 0
+    Power: 0
+  Intro: {fileID: 4900000, guid: 161dfcb183109e249bfede02e488aa61, type: 3}
+  OnPlayerWin: {fileID: 4900000, guid: c85e0835694132d49a630aa4370d6ea9, type: 3}
+  OnPlayerLoose: {fileID: 4900000, guid: 923f4943bcbeaae4eb1d975c1479f3fb, type: 3}

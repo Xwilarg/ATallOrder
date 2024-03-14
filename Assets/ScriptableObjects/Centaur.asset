@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: afc4ef2a70a319b43a89ff75eff9f760, type: 2}
   StatBlock:
     Health: 0
-    AttackSpeed: 5
+    AttackSpeed: 1
     Defense: 0
     Power: 0
   Intro: {fileID: 4900000, guid: e337b038d8f76cf4ab551315d071b873, type: 3}
