@@ -17,6 +17,8 @@ namespace NSFWMiniJam3.World
         private float _movTimer;
         private Door _target;
 
+        private bool _naked;
+
         private void Awake()
         {
             _anim = GetComponent<Animator>();
@@ -31,6 +33,8 @@ namespace NSFWMiniJam3.World
 
         private void Update()
         {
+            _anim.SetBool("GetNaked", _naked); // Unity doing weird shit
+
             if (_target != null)
             {
                 _movTimer += Time.deltaTime;
@@ -56,7 +60,7 @@ namespace NSFWMiniJam3.World
 
         public void NakedAnim()
         {
-            _anim.SetTrigger("GetNaked");
+            _naked = true;
         }
 
         public void RunAnim()
