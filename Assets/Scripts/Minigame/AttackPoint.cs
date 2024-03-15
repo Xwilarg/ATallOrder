@@ -6,7 +6,7 @@ namespace NSFWMiniJam3.Combat
     public class AttackPoint : MonoBehaviour
     {
         [SerializeField] Transform innerCircle;
-        float attackSpeed = 1f;
+        public float AttackSpeed { set; private get; }
 
         private float _timer = 0f;
 
@@ -20,7 +20,7 @@ namespace NSFWMiniJam3.Combat
 
         private void Update()
         {
-            _timer += Time.deltaTime * attackSpeed;
+            _timer += Time.deltaTime * AttackSpeed;
 
             if (_timer >= 1f)
             {

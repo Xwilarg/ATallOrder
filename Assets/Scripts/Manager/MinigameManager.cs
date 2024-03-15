@@ -1,4 +1,5 @@
-﻿using NSFWMiniJam3.SO;
+﻿using NSFWMiniJam3.Combat;
+using NSFWMiniJam3.SO;
 using System;
 using System.Collections;
 using System.Linq;
@@ -27,6 +28,9 @@ namespace NSFWMiniJam3.Manager
         [SerializeField]
         private GameObject _spamInstruction;
 
+        [SerializeField]
+        private Animator _anim;
+
         private const float _barMult = 20f;
 
         private NpcInfo npcInfo;
@@ -47,12 +51,13 @@ namespace NSFWMiniJam3.Manager
 
         public bool IsStealingClothes { private set; get; }
         private float _struggleTimer = 0f;
-        private const float _struggleTimerRef = .5f;
         private int _struggleCount = 0;
 
         public void Play(NpcInfo info, Action onWin, Action onLoose)
         {
             IsPlaying = true;
+
+            _anim.SetTrigger("Reset");
 
             AudioManager.Instance.PlayMusic(AudioManager.SongName.Combat);
 
@@ -99,7 +104,7 @@ namespace NSFWMiniJam3.Manager
                     }
 
                     _struggleCount++;
-                    _struggleTimer = _struggleTimerRef - (0.05f * _struggleCount);
+                    _struggleTimer = npcInfo.StatBlock.ClothFightbackInitialValue - (0.05f * _struggleCount);
                     if (_struggleTimer < .1f) _struggleTimer = .1f;
                 }
             }
@@ -115,6 +120,7 @@ namespace NSFWMiniJam3.Manager
             {
                 IsStealingClothes = false;
                 _spamInstruction.SetActive(false);
+                _anim.SetTrigger("Defeat");
 
                 StartCoroutine(WaitAndDo(1f, () =>
                 {
@@ -150,14 +156,15 @@ namespace NSFWMiniJam3.Manager
                 if (_score >= 0)
                 {
                     _spamInstruction.SetActive(true);
-                    _score -= Mathf.RoundToInt(_barMult / 2f);
+                    _score -= npcInfo.StatBlock.ClothFightbackOffset;
                     UpdateScoreUI();
 
                     _struggleCount = 0;
-                    _struggleTimer = _struggleTimerRef;
+                    _struggleTimer = npcInfo.StatBlock.ClothFightbackInitialValue;
 
                     StartCoroutine(WaitAndDo(1f, () =>
                     {
+                        _anim.SetTrigger("Struggle");
                         IsStealingClothes = true;
                     }));
                 }
@@ -189,6 +196,7 @@ namespace NSFWMiniJam3.Manager
                     GameObject newAP = Instantiate(attackPointRef, attackHolder);
 
                     newAP.SetActive(true);
+                    newAP.GetComponent<AttackPoint>().AttackSpeed = npcInfo.StatBlock.AttackSpeed;
                     newAP.transform.position = new Vector2(point.x * Screen.width, point.y * Screen.height);
                 }
 

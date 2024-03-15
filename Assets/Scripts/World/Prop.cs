@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using NSFWMiniJam3.Manager;
 using NSFWMiniJam3.SO;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -44,6 +45,7 @@ namespace NSFWMiniJam3.World
             if (HiddenNpc != null)
             {
                 var npc = SpawnNpc(pc);
+                npc.transform.Translate(Vector3.up * .25f);
                 DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.Intro, () =>
                 {
                     MinigameManager.Instance.Play(HiddenNpc,
@@ -58,16 +60,18 @@ namespace NSFWMiniJam3.World
                         onWin: () =>
                         {
                             npc.DownAnim();
-                            npc.transform.Translate(Vector3.down);
+                            npc.transform.position = new Vector3(transform.position.x, pc.transform.position.y, 0f) + Vector3.down;
                             DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.OnPlayerWin, () =>
                             {
                                 TransitionManager.Instance.StartTransition((CinemachineVirtualCamera _) =>
                                 {
                                     SetHide(null);
                                     npc.NakedAnim();
+
                                     var node = GameManager.Instance.NextSpot;
                                     npc.transform.parent = node.transform;
                                     npc.transform.position = node.transform.position;
+                                    npc.GetComponent<SpriteRenderer>().sortingLayerName = "NPC";
                                 });
                             });
                         });

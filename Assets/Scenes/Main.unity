@@ -5908,6 +5908,7 @@ MonoBehaviour:
   _playerProg: {fileID: 1019116221}
   _bossProg: {fileID: 1342753504}
   _spamInstruction: {fileID: 815498637}
+  _anim: {fileID: 1913914774}
 --- !u!114 &2040772145
 MonoBehaviour:
   m_ObjectHideFlags: 0

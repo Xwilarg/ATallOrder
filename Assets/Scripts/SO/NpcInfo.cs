@@ -26,9 +26,8 @@ namespace NSFWMiniJam3.SO
     [System.Serializable]
     public struct Stats
     {
-        public int Health;
         public float AttackSpeed;
-        public float Defense;
-        public float Power;
+        public float ClothFightbackInitialValue;
+        public int ClothFightbackOffset;
     }
 }

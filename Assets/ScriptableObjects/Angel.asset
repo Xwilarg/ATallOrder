@@ -19,10 +19,9 @@ MonoBehaviour:
   attackPatterns:
   - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}
   StatBlock:
-    Health: 0
     AttackSpeed: 1
-    Defense: 0
-    Power: 0
+    ClothFightbackInitialValue: 0.5
+    ClothFightbackOffset: 20
   Intro: {fileID: 4900000, guid: 161dfcb183109e249bfede02e488aa61, type: 3}
   OnPlayerWin: {fileID: 4900000, guid: c85e0835694132d49a630aa4370d6ea9, type: 3}
   OnPlayerLoose: {fileID: 4900000, guid: 923f4943bcbeaae4eb1d975c1479f3fb, type: 3}
