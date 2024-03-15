@@ -27,6 +27,9 @@ namespace NSFWMiniJam3.Manager
         [SerializeField]
         private GameObject _spamInstruction;
 
+        [SerializeField]
+        private Animator _anim;
+
         private const float _barMult = 20f;
 
         private NpcInfo npcInfo;
@@ -53,6 +56,8 @@ namespace NSFWMiniJam3.Manager
         public void Play(NpcInfo info, Action onWin, Action onLoose)
         {
             IsPlaying = true;
+
+            _anim.SetTrigger("Reset");
 
             AudioManager.Instance.PlayMusic(AudioManager.SongName.Combat);
 
@@ -115,6 +120,7 @@ namespace NSFWMiniJam3.Manager
             {
                 IsStealingClothes = false;
                 _spamInstruction.SetActive(false);
+                _anim.SetTrigger("Defeat");
 
                 StartCoroutine(WaitAndDo(1f, () =>
                 {
@@ -158,6 +164,7 @@ namespace NSFWMiniJam3.Manager
 
                     StartCoroutine(WaitAndDo(1f, () =>
                     {
+                        _anim.SetTrigger("Struggle");
                         IsStealingClothes = true;
                     }));
                 }
