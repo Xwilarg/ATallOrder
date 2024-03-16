@@ -71,7 +71,7 @@ namespace NSFWMiniJam3.World
         public void SetDestination(Door d)
         {
             _target = d;
-            GetComponent<SpriteRenderer>().flipX = d.transform.position.x < transform.position.x;
+            GetComponent<SpriteRenderer>().flipX = d.transform.position.x > transform.position.x;
         }
 
         /*public void Interact(PlayerController pc)
