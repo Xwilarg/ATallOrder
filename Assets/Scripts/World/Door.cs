@@ -33,8 +33,8 @@ namespace NSFWMiniJam3.World
                     pc.transform.position = _destination.transform.position;
                     pc.transform.localPosition = new(pc.transform.localPosition.x, localPos.y, 0f);
 
-                    var composer = vCam.GetCinemachineComponent<CinemachineTransposer>();
-                    vCam.ForceCameraPosition(new(pc.transform.position.x, pc.transform.position.y + composer.m_FollowOffset.y, vCam.transform.position.z), vCam.transform.rotation);
+                    var composer = vCam.GetCinemachineComponent<CinemachineFramingTransposer>();
+                    vCam.ForceCameraPosition(new(pc.transform.position.x, pc.transform.position.y + composer.m_TrackedObjectOffset.y, vCam.transform.position.z), vCam.transform.rotation);
                 });
             }
         }

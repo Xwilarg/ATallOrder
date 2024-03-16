@@ -53,6 +53,8 @@ namespace NSFWMiniJam3.Manager
         private float _struggleTimer = 0f;
         private int _struggleCount = 0;
 
+        private bool _gotDamageYet;
+
         public void Play(NpcInfo info, Action onWin, Action onLoose)
         {
             IsPlaying = true;
@@ -146,6 +148,12 @@ namespace NSFWMiniJam3.Manager
 
         public void UpdateScore(int val)
         {
+            if (!_gotDamageYet && val < 0)
+            {
+                _gotDamageYet = true;
+                _anim.SetTrigger("Attack");
+            }
+
             _score += val;
 
             _atcksLeft--;
@@ -189,6 +197,8 @@ namespace NSFWMiniJam3.Manager
                 IsNPCAttacking = true;
 
                 //get a pattern, cycle through it, instantiate attack points (with offset)
+
+                _gotDamageYet = false;
 
                 foreach (PointSpawns point in p.attackPointArray)
                 {

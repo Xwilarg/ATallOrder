@@ -19,7 +19,7 @@ MonoBehaviour:
   attackPatterns:
   - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}
   StatBlock:
-    AttackSpeed: 2
+    AttackSpeed: 1.5
     ClothFightbackInitialValue: 0.5
     ClothFightbackOffset: 10
   Intro: {fileID: 4900000, guid: d62edd9398b407748b3143313b27e45b, type: 3}
