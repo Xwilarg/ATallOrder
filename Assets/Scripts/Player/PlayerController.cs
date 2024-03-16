@@ -17,6 +17,7 @@ namespace NSFWMiniJam3
 
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
+        private Animator _anim;
 
         private float _movX;
 
@@ -28,10 +29,13 @@ namespace NSFWMiniJam3
         {
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
+            _anim = GetComponent<Animator>();
         }
 
         private void FixedUpdate()
         {
+            _anim.SetBool("IsStunned", RoomsManager.Instance.EnemyRunningAway > 0);
+            _anim.SetBool("IsRunning", GameManager.Instance.CanMove && _movX != 0f);
             var x = GameManager.Instance.CanMove ? _movX * _info.Speed : 0f;
             _rb.velocity = new(x, _rb.velocity.y);
         }
