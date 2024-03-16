@@ -16,6 +16,7 @@ namespace NSFWMiniJam3
         private TMP_Text _interactionHint;
 
         private Rigidbody2D _rb;
+        private SpriteRenderer _sr;
 
         private float _movX;
 
@@ -26,6 +27,7 @@ namespace NSFWMiniJam3
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _sr = GetComponent<SpriteRenderer>();
         }
 
         private void FixedUpdate()
@@ -60,8 +62,16 @@ namespace NSFWMiniJam3
         public void OnMove(InputAction.CallbackContext value)
         {
             _movX = value.ReadValue<Vector2>().x;
-            if (_movX < 0f) _movX = -1f;
-            else if (_movX > 0f) _movX = 1f;
+            if (_movX < 0f)
+            {
+                _movX = -1f;
+                _sr.flipX = true;
+            }
+            else if (_movX > 0f)
+            {
+                _movX = 1f;
+                _sr.flipX = false;
+            }
         }
 
         public void OnStruggle(InputAction.CallbackContext value)
