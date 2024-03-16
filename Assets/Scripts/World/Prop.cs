@@ -65,6 +65,8 @@ namespace NSFWMiniJam3.World
                             {
                                 TransitionManager.Instance.StartTransition((CinemachineVirtualCamera _) =>
                                 {
+                                    GameManager.Instance.MinigameWon++;
+
                                     SetHide(null);
                                     npc.NakedAnim();
 

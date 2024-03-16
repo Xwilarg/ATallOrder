@@ -11,6 +11,8 @@ namespace NSFWMiniJam3.Manager
 
         private int _spotIndex;
 
+        public int MinigameWon { set; get; }
+
         public Transform NextSpot
         {
             get
