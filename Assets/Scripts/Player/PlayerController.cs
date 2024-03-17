@@ -41,8 +41,8 @@ namespace NSFWMiniJam3
         private void FixedUpdate()
         {
             _anim.SetBool("IsStunned", StunOverrides || RoomsManager.Instance.EnemyRunningAway > 0);
-            _anim.SetBool("IsRunning", GameManager.Instance.CanMove && _movX != 0f);
-            var x = GameManager.Instance.CanMove ? _movX * _info.Speed : 0f;
+            _anim.SetBool("IsRunning", !StunOverrides && GameManager.Instance.CanMove && _movX != 0f);
+            var x = !StunOverrides && GameManager.Instance.CanMove ? _movX * _info.Speed : 0f;
             _rb.velocity = new(x, _rb.velocity.y);
         }
 
