@@ -44,7 +44,7 @@ namespace NSFWMiniJam3.World
 
             if (_target != null)
             {
-                _movTimer += Time.deltaTime;
+                _movTimer += Time.deltaTime * .5f;
 
                 if (_movTimer >= 1f)
                 {
