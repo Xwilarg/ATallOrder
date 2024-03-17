@@ -31,6 +31,9 @@ namespace NSFWMiniJam3.Manager
         [SerializeField]
         private Animator _anim;
 
+        [SerializeField]
+        private GameObject _endButton;
+
         private const float _barMult = 20f;
 
         private NpcInfo npcInfo;
@@ -65,6 +68,7 @@ namespace NSFWMiniJam3.Manager
 
             IsStealingClothes = false;
             _spamInstruction.SetActive(false);
+            _endButton.SetActive(false);
 
             _onLoose = onLoose;
             _onWin = onWin;
@@ -124,12 +128,15 @@ namespace NSFWMiniJam3.Manager
                 _spamInstruction.SetActive(false);
                 _anim.SetTrigger("Defeat");
 
-                StartCoroutine(WaitAndDo(2f, () =>
-                {
-                    EndGame();
-                    _onWin?.Invoke();
-                }));
+                _spamInstruction.SetActive(false);
+                _endButton.SetActive(true);
             }
+        }
+
+        public void Win()
+        {
+            EndGame();
+            _onWin?.Invoke();
         }
 
         private void EndGame()
