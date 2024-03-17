@@ -29,4 +29,4 @@ MonoBehaviour:
   Garden: {fileID: 4900000, guid: 05ff06c9f6a216f459c4182c976e2326, type: 3}
   PosOverrides:
     IsMovedDownWhenFound: 0
-    IsSpriteInverted: 0
+    IsSpriteInverted: 1

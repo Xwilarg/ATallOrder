@@ -1,4 +1,7 @@
-﻿using NSFWMiniJam3.World;
+﻿// Uncomment to display pathfinding console debug
+// #define PATHFINDING_DEBUG
+
+using NSFWMiniJam3.World;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,6 +9,7 @@ using UnityEngine.Assertions;
 
 namespace NSFWMiniJam3.Manager
 {
+
     public class RoomsManager : MonoBehaviour
     {
         public static RoomsManager Instance { private set; get; }
@@ -41,22 +45,33 @@ namespace NSFWMiniJam3.Manager
 
         private bool CheckDoorAccess(Room current, Room destination, List<Room> path)
         {
+            if (path.Contains(current))
+            {
+#if PATHFINDING_DEBUG
+                Debug.Log($"Rejecting path of {string.Join(", ", path.Select(x => x.name))} already containing {destination.name}");
+#endif
+                return false;
+            }
+            path.Add(current);
+
+#if PATHFINDING_DEBUG
+            Debug.Log($"Currently at {current.name}, going to {destination.name}, progress: {string.Join(", ", path.Select(x => x.name))}");
+#endif
             if (current == destination)
             {
+#if PATHFINDING_DEBUG
+                Debug.Log($"Path found: {string.Join(", ", path.Select(x => x.name))}");
+#endif
                 return true;
             }
 
-            if (path.Contains(destination))
-            {
-                Debug.Log($"[PATH] Rejecting path of {string.Join(", ", path.Select(x => x.name))} already containing {destination.name}");
-                return false;
-            }
-
+#if PATHFINDING_DEBUG
+            Debug.Log($"Possible door: {string.Join(", ", current.Doors.Select(x => $"{x.name} to {x.Destination.name}"))}");
+#endif
             foreach (var room in current.Doors.Select(x => x.Destination).Where(x => !path.Any(p => p.gameObject.GetInstanceID() == x.gameObject.GetInstanceID()))) // Assume 2 doors don't go to the same room
             {
                 List<Room> newPath = new();
                 newPath.AddRange(path);
-                newPath.Add(room);
 
                 if (CheckDoorAccess(room, destination, newPath))
                 {
@@ -69,8 +84,17 @@ namespace NSFWMiniJam3.Manager
 
         public Door[] GetDoorTo(Room current, Room destination)
         {
+#if PATHFINDING_DEBUG
+            Debug.Log("--------------------------------");
+#endif
             return current.Doors
-                .Where(x => CheckDoorAccess(x.Destination, destination, new() { x.Destination }))
+                .Where(x =>
+                {
+#if PATHFINDING_DEBUG
+                    Debug.Log($"VERIFYING FOR {x.name} going to {x.Destination}");
+#endif
+                    return CheckDoorAccess(x.Destination, destination, new() { current });
+                })
                 .ToArray();
         }
 
