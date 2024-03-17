@@ -20,8 +20,7 @@ namespace NSFWMiniJam3.Manager
         {
             get
             {
-                _spotIndex++;
-                return _spots[_spotIndex];
+                return _spots[_spotIndex++];
             }
         }
 
