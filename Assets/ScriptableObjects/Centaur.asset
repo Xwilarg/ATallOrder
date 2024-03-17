@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Centaur
   GameSprite: {fileID: 21300000, guid: 84b51d67f79cb374eb557b239a818334, type: 3}
-  FightAnimator: {fileID: 0}
+  FightAnimator: {fileID: 22100000, guid: 0afd85ab569e7644ca4068a53fcd5b24, type: 2}
   WorldAnimator: {fileID: 22100000, guid: d76624dd321ba3b46b9857388c0c9420, type: 2}
   attackPatterns:
   - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}

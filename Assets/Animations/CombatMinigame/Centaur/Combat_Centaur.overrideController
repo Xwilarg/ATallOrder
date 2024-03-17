@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Combat_Centaur
+  m_Controller: {fileID: 9100000, guid: baccd25155305ef48b492db7df2c8b62, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2b128764047e91d4caae14ad429e3226, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e53228fbc71675a4a99d1074b8367690, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 907991bf38a08644d9c50c0d65230621, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fd108cb0f3796874682f34cfed2c30f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b7452ac0e0e1ffc4cac77496be4e059c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b91682318c7bef947aa8449af1a99c25, type: 2}
