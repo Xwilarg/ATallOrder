@@ -60,7 +60,10 @@ namespace NSFWMiniJam3.World
                         onWin: () =>
                         {
                             npc.DownAnim();
-                            npc.transform.position = new Vector3(transform.position.x, pc.transform.position.y, 0f) + Vector3.down;
+                            if (HiddenNpc.PosOverrides.IsMovedDownWhenFound)
+                            {
+                                npc.transform.position = new Vector3(transform.position.x, pc.transform.position.y, 0f) + Vector3.down;
+                            }
                             DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.OnPlayerWin, () =>
                             {
                                 TransitionManager.Instance.StartTransition((CinemachineVirtualCamera _) =>

@@ -21,6 +21,8 @@ namespace NSFWMiniJam3.SO
 
         public TextAsset Intro, OnPlayerWin, OnPlayerLoose;
 
+        public WorldPosOverrides PosOverrides;
+
     }
 
     [System.Serializable]
@@ -29,5 +31,11 @@ namespace NSFWMiniJam3.SO
         public float AttackSpeed;
         public float ClothFightbackInitialValue;
         public int ClothFightbackOffset;
+    }
+
+    [System.Serializable]
+    public struct WorldPosOverrides
+    {
+        public bool IsMovedDownWhenFound;
     }
 }

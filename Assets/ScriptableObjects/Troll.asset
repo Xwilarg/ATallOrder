@@ -25,3 +25,5 @@ MonoBehaviour:
   Intro: {fileID: 4900000, guid: d62edd9398b407748b3143313b27e45b, type: 3}
   OnPlayerWin: {fileID: 4900000, guid: b11e6deec6c363f459d6bc07b5f8c6e3, type: 3}
   OnPlayerLoose: {fileID: 4900000, guid: 0eadbdbd071c88a4e8521f5c8225f66f, type: 3}
+  PosOverrides:
+    IsMovedDownWhenFound: 1
