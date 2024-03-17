@@ -15,12 +15,16 @@ namespace NSFWMiniJam3.World
         {
             if (GameManager.Instance.MinigameWon == 3)
             {
+                var sr = GetComponent<SpriteRenderer>();
+                sr.sortingLayerName = "Player";
+                sr.sortingOrder = -1;
+                transform.position = new(transform.position.x, 1.17f);
                 DialogueManager.Instance.ShowStory(transform.position, _gameEndText, () =>
                 {
                     SceneManager.LoadScene("Menu");
                 });
             }
-            if (pc.HasKey)
+            else if (pc.HasKey)
             {
                 DialogueManager.Instance.ShowStory(transform.position, _introTwiceText);
             }
