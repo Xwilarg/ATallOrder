@@ -1,5 +1,4 @@
-﻿using NSFWMiniJam3.SO;
-using NSFWMiniJam3.World;
+﻿using NSFWMiniJam3.World;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,7 +11,7 @@ namespace NSFWMiniJam3.Manager
         public static RoomsManager Instance { private set; get; }
 
         [SerializeField]
-        private NpcInfo[] _npcs;
+        private Npc[] _npcs;
 
         private Room[] _rooms;
 
@@ -30,18 +29,13 @@ namespace NSFWMiniJam3.Manager
         private void Start()
         {
             ShowRoom(_rooms.First(x => x.IsStartingRoom));
+        }
 
+        public void RunAndHideAll(Room r, PlayerController pc)
+        {
             foreach (var npc in _npcs)
             {
-                var r = GetRandomAvailableRoom(null);
-                if (r != null)
-                {
-                    var prop = r.RandomProp;
-#if UNITY_EDITOR
-                    Debug.Log($"{npc.CharacterName} is hiding at {r.name} in {prop.name}");
-#endif
-                    prop.SetHide(npc);
-                }
+                r.RunAway(pc, npc.Info, _ => npc);
             }
         }
 
@@ -50,6 +44,12 @@ namespace NSFWMiniJam3.Manager
             if (current == destination)
             {
                 return true;
+            }
+
+            if (path.Contains(destination))
+            {
+                Debug.Log($"[PATH] Rejecting path of {string.Join(", ", path.Select(x => x.name))} already containing {destination.name}");
+                return false;
             }
 
             foreach (var room in current.Doors.Select(x => x.Destination).Where(x => !path.Any(p => p.gameObject.GetInstanceID() == x.gameObject.GetInstanceID()))) // Assume 2 doors don't go to the same room

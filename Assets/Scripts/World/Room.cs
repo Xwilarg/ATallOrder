@@ -1,4 +1,5 @@
 ﻿using NSFWMiniJam3.Manager;
+using NSFWMiniJam3.SO;
 using System.Linq;
 using UnityEngine;
 
@@ -34,6 +35,40 @@ namespace NSFWMiniJam3.World
             _props = GetComponentsInChildren<Prop>();
         }
 
+        public bool RunAway(PlayerController pc, NpcInfo info, System.Func<PlayerController, Npc> spawn)
+        {
+            // Get another free room
+            var freeRoom = RoomsManager.Instance.GetRandomAvailableRoom(this);
+            if (freeRoom == null)
+            {
+                Debug.LogWarning($"No other room found, staying hidden...");
+                return false;
+            }
+
+            // Get path to the room
+            var possibleDoors = RoomsManager.Instance.GetDoorTo(this, freeRoom);
+
+            if (!possibleDoors.Any())
+            {
+                Debug.LogWarning($"No path found to go from {name} to {freeRoom.name}, staying hidden...");
+                return false;
+            }
+
+
+            Debug.Log($"{info.CharacterName} is going to hide in {freeRoom.name} (Possible doors: {string.Join(", ", possibleDoors.Select(x => x.name))})");
+
+            // Hide NPC
+            freeRoom.RandomProp.SetHide(info);
+
+            // Make NPC run away
+            RoomsManager.Instance.EnemyRunningAway++;
+            var npc = spawn(pc);
+            npc.RunAnim();
+            npc.SetDestination(possibleDoors[Random.Range(0, possibleDoors.Length)]);
+
+            return true;
+        }
+
         /// <summary>
         /// Code executed when the player look inside an empty object
         /// </summary>
@@ -41,36 +76,8 @@ namespace NSFWMiniJam3.World
         {
             foreach (Prop p in _props)
             {
-                if (p.HiddenNpc != null)
+                if (p.HiddenNpc != null && RunAway(pc, p.HiddenNpc, p.SpawnNpc))
                 {
-                    var info = p.HiddenNpc;
-
-                    // Get another free room
-                    var freeRoom = RoomsManager.Instance.GetRandomAvailableRoom(this);
-                    if (freeRoom == null)
-                    {
-                        Debug.LogWarning($"No other room found, staying hidden...");
-                        continue;
-                    }
-
-                    // Get path to the room
-                    var possibleDoors = RoomsManager.Instance.GetDoorTo(this, freeRoom);
-
-                    if (!possibleDoors.Any())
-                    {
-                        Debug.LogWarning($"No path found to go from {name} to {freeRoom.name}, staying hidden...");
-                        continue;
-                    }
-
-                    // Hide NPC
-                    freeRoom.RandomProp.SetHide(info);
-
-                    // Make NPC run away
-                    RoomsManager.Instance.EnemyRunningAway++;
-                    var npc = p.SpawnNpc(pc);
-                    npc.RunAnim();
-                    npc.SetDestination(possibleDoors[Random.Range(0, possibleDoors.Length)]);
-
                     // Remove NPC from prop
                     p.SetHide(null);
                 }

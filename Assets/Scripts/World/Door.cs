@@ -18,6 +18,8 @@ namespace NSFWMiniJam3.World
 
         public bool CanInteract => true;
 
+        public bool _alreadyOpen;
+
         public void Interact(PlayerController pc)
         {
             if (_requireKey && !pc.HasKey)
@@ -38,6 +40,12 @@ namespace NSFWMiniJam3.World
                     var composer = vCam.GetCinemachineComponent<CinemachineFramingTransposer>();
                     vCam.ForceCameraPosition(new(pc.transform.position.x, pc.transform.position.y + composer.m_TrackedObjectOffset.y, vCam.transform.position.z), vCam.transform.rotation);
                     pc.SetCamCollider(Destination.RoomColl);
+
+                    if (_requireKey && !_alreadyOpen)
+                    {
+                        RoomsManager.Instance.RunAndHideAll(Destination, pc);
+                    }
+                    _alreadyOpen = true;
                 });
             }
         }
