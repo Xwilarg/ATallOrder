@@ -11,7 +11,7 @@ We've got a bit of time to kill, what do you say pervert?
 Want to be put in your...rightful place?
 
     + [Give me some sugar!]
-        I like your enthusiasm! Now,
+        I like your enthusiasm! Now,  #cg enable
         Get on your knees. You've been really naughty.
         Barely worthy to kiss my feet, but we can start there.
         Hmm, that's nice.
@@ -27,5 +27,5 @@ Want to be put in your...rightful place?
     +[No thanks.]
         Tch, useless. Fine.
         
--I'll be in the garden if you want to come see me again.
+-I'll be in the garden if you want to come see me again.  #cg disable
 -> END
