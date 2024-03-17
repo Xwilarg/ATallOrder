@@ -55,8 +55,12 @@ namespace NSFWMiniJam3.World
                 }
                 npc.transform.Translate(Vector3.up * .13f);
                 pc.RemoveInteraction();
-                DialogueManager.Instance.ShowStory(npc.transform.position, HiddenNpc.Intro, () =>
+                DialogueManager.Instance.ShowStory(npc.transform.position, GameManager.Instance.WasFound.Contains(HiddenNpc.CharacterName) ? HiddenNpc.Rematch : HiddenNpc.Intro, () =>
                 {
+                    if (!GameManager.Instance.WasFound.Contains(HiddenNpc.CharacterName))
+                    {
+                        GameManager.Instance.WasFound.Add(HiddenNpc.CharacterName);
+                    }
                     MinigameManager.Instance.Play(HiddenNpc,
                         onLoose: () =>
                         {

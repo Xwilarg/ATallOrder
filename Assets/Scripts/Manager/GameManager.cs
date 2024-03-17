@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace NSFWMiniJam3.Manager
 {
@@ -12,6 +13,8 @@ namespace NSFWMiniJam3.Manager
         private int _spotIndex;
 
         public int MinigameWon { set; get; }
+
+        public readonly List<string> WasFound = new();
 
         public Transform NextSpot
         {
