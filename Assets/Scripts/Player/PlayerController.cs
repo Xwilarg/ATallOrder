@@ -27,6 +27,8 @@ namespace NSFWMiniJam3
 
         private InteractionTarget _interactionTarget;
 
+        public bool StunOverrides { set; get; }
+
         public bool HasKey { set; get; }
 
         private void Awake()
@@ -38,7 +40,7 @@ namespace NSFWMiniJam3
 
         private void FixedUpdate()
         {
-            _anim.SetBool("IsStunned", RoomsManager.Instance.EnemyRunningAway > 0);
+            _anim.SetBool("IsStunned", StunOverrides || RoomsManager.Instance.EnemyRunningAway > 0);
             _anim.SetBool("IsRunning", GameManager.Instance.CanMove && _movX != 0f);
             var x = GameManager.Instance.CanMove ? _movX * _info.Speed : 0f;
             _rb.velocity = new(x, _rb.velocity.y);

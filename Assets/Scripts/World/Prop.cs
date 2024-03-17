@@ -60,10 +60,12 @@ namespace NSFWMiniJam3.World
                     MinigameManager.Instance.Play(HiddenNpc,
                         onLoose: () =>
                         {
+                            pc.StunOverrides = true;
                             DialogueManager.Instance.ShowStory(npc.transform.position, HiddenNpc.OnPlayerLoose, () =>
                             {
                                 Destroy(npc.gameObject);
                                 ParentRoom.FailHideCheck(pc);
+                                pc.StunOverrides = false;
                             });
                         },
                         onWin: () =>
