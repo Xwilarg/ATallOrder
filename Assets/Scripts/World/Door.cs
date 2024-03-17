@@ -35,6 +35,7 @@ namespace NSFWMiniJam3.World
 
                     var composer = vCam.GetCinemachineComponent<CinemachineFramingTransposer>();
                     vCam.ForceCameraPosition(new(pc.transform.position.x, pc.transform.position.y + composer.m_TrackedObjectOffset.y, vCam.transform.position.z), vCam.transform.rotation);
+                    pc.SetCamCollider(Destination.RoomColl);
                 });
             }
         }

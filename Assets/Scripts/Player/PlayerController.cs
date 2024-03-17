@@ -1,3 +1,4 @@
+using Cinemachine;
 using NSFWMiniJam3.Manager;
 using NSFWMiniJam3.SO;
 using NSFWMiniJam3.World;
@@ -14,6 +15,9 @@ namespace NSFWMiniJam3
 
         [SerializeField]
         private TMP_Text _interactionHint;
+
+        [SerializeField]
+        private CinemachineConfiner2D _confiner;
 
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
@@ -61,6 +65,11 @@ namespace NSFWMiniJam3
                 _interactionHint.gameObject.SetActive(false);
                 _interactionTarget = null;
             }
+        }
+
+        public void SetCamCollider(Collider2D coll)
+        {
+            _confiner.m_BoundingShape2D = coll;
         }
 
         public void OnMove(InputAction.CallbackContext value)

@@ -12,6 +12,9 @@ namespace NSFWMiniJam3.World
         private Prop[] _props;
         public Door[] Doors { private set; get; }
 
+        private Collider2D _coll;
+        public Collider2D RoomColl => _coll;
+
         public bool CanHideInRoom => _props.Any() && _props.All(x => x.HiddenNpc == null);
 
         public Prop RandomProp => _props[Random.Range(0, _props.Length)];
@@ -20,6 +23,8 @@ namespace NSFWMiniJam3.World
 
         private void Awake()
         {
+            _coll = GetComponent<Collider2D>();
+
             foreach (var ro in GetComponentsInChildren<IRoomOwned>())
             {
                 ro.ParentRoom = this;
