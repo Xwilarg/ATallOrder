@@ -33,6 +33,8 @@ namespace NSFWMiniJam3.Manager
 
         public bool IsPlayingStory => _container.activeInHierarchy;
 
+        public TextDisplay Display => _hSceneContainer.activeInHierarchy ? _vnDisplay : _display;
+
         private void Awake()
         {
             Instance = this;
@@ -99,14 +101,7 @@ namespace NSFWMiniJam3.Manager
                         break;
                 }
             }
-            if (_hSceneContainer.activeInHierarchy)
-            {
-                _vnDisplay.ToDisplay = text;
-            }
-            else
-            {
-                _display.ToDisplay = text;
-            }
+            Display.ToDisplay = text;
         }
 
         public void DisplayNextDialogue()
@@ -115,10 +110,10 @@ namespace NSFWMiniJam3.Manager
             {
                 return;
             }
-            if (!_display.IsDisplayDone)
+            if (!Display.IsDisplayDone)
             {
                 // We are slowly displaying a text, force the whole display
-                _display.ForceDisplay();
+                Display.ForceDisplay();
             }
             else if (_story.canContinue && // There is text left to write
                 !_story.currentChoices.Any()) // We are not currently in a choice
