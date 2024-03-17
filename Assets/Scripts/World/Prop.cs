@@ -55,12 +55,12 @@ namespace NSFWMiniJam3.World
                 }
                 npc.transform.Translate(Vector3.up * .13f);
                 pc.RemoveInteraction();
-                DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.Intro, () =>
+                DialogueManager.Instance.ShowStory(npc.transform.position, HiddenNpc.Intro, () =>
                 {
                     MinigameManager.Instance.Play(HiddenNpc,
                         onLoose: () =>
                         {
-                            DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.OnPlayerLoose, () =>
+                            DialogueManager.Instance.ShowStory(npc.transform.position, HiddenNpc.OnPlayerLoose, () =>
                             {
                                 Destroy(npc.gameObject);
                                 ParentRoom.FailHideCheck(pc);
@@ -73,7 +73,7 @@ namespace NSFWMiniJam3.World
                             {
                                 npc.transform.position = new Vector3(transform.position.x, pc.transform.position.y, 0f) + Vector3.down;
                             }
-                            DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.OnPlayerWin, () =>
+                            DialogueManager.Instance.ShowStory(npc.transform.position, HiddenNpc.OnPlayerWin, () =>
                             {
                                 TransitionManager.Instance.StartTransition((CinemachineVirtualCamera _) =>
                                 {
