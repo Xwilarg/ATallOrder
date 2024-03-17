@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Angel
   GameSprite: {fileID: 21300000, guid: ee53bf34931a5b547bca4d0663f78856, type: 3}
-  FightAnimator: {fileID: 0}
+  FightAnimator: {fileID: 22100000, guid: 344dc8e4c9e06de4787c44bfd9f389e0, type: 2}
   WorldAnimator: {fileID: 22100000, guid: 612be9d6f1210f4409a67a73dbb97649, type: 2}
   attackPatterns:
   - {fileID: 11400000, guid: 4b0febbda18c5934fa58f46d90cbbf4c, type: 2}
