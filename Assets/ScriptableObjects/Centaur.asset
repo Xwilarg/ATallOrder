@@ -28,6 +28,7 @@ MonoBehaviour:
   OnPlayerWin: {fileID: 4900000, guid: 646781a9ebed1864db33a87a49fab59e, type: 3}
   OnPlayerLoose: {fileID: 4900000, guid: 1afa74d8cd467354db5723096cd5339b, type: 3}
   Rematch: {fileID: 4900000, guid: 7e71084b7ac18834487e063f31caccad, type: 3}
+  Garden: {fileID: 4900000, guid: 19cd7010f561f4a43a3ac1e13c3ea86c, type: 3}
   PosOverrides:
     IsMovedDownWhenFound: 0
     IsSpriteInverted: 1

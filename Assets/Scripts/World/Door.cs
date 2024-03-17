@@ -16,6 +16,8 @@ namespace NSFWMiniJam3.World
 
         public string InteractionKey => "enter";
 
+        public bool CanInteract => true;
+
         public void Interact(PlayerController pc)
         {
             if (_requireKey && !pc.HasKey)

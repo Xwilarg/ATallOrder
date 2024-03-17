@@ -48,7 +48,7 @@ namespace NSFWMiniJam3
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<IInteractable>(out var comp))
+            if (collision.TryGetComponent<IInteractable>(out var comp) && comp.CanInteract)
             {
                 _interactionHint.gameObject.SetActive(true);
                 _interactionHint.text = $"'E' to {comp.InteractionKey}";

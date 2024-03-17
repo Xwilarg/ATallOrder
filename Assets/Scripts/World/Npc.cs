@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace NSFWMiniJam3.World
 {
-    public class Npc : MonoBehaviour//, IInteractable
+    public class Npc : MonoBehaviour, IInteractable
     {
         private NpcInfo _info;
 
         private Animator _anim;
 
-        public bool IsDowned { private set; get; }
+        public bool IsDowned { set; get; }
 
         // Target data
         private Vector2 _iniPos;
@@ -81,15 +81,13 @@ namespace NSFWMiniJam3.World
             }
         }
 
-        /*public void Interact(PlayerController pc)
-        {
-            if (IsDowned)
-            {
+        public string InteractionKey => "speak";
 
-            }
-            else
-            {
-            }
-        }*/
+        public bool CanInteract => IsDowned;
+
+        public void Interact(PlayerController pc)
+        {
+            DialogueManager.Instance.ShowStory(transform.position, _info.Garden);
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace NSFWMiniJam3.World
             MinigameManager.Instance.Play(_info, null, null);
         }
         public string InteractionKey => "speak";
+
+        public bool CanInteract => true;
     }
 }

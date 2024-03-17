@@ -5,5 +5,6 @@
         void Interact(PlayerController pc);
 
         public string InteractionKey { get; }
+        public bool CanInteract {  get; }
     }
 }

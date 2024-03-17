@@ -19,7 +19,7 @@ namespace NSFWMiniJam3.SO
         
         public Stats StatBlock;
 
-        public TextAsset Intro, OnPlayerWin, OnPlayerLoose, Rematch;
+        public TextAsset Intro, OnPlayerWin, OnPlayerLoose, Rematch, Garden;
 
         public WorldPosOverrides PosOverrides;
 

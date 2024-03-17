@@ -18,6 +18,8 @@ namespace NSFWMiniJam3.World
 
         public string InteractionKey => "speak";
 
+        public bool CanInteract => true;
+
         public void Interact(PlayerController pc)
         {
             if (GameManager.Instance.MinigameWon == 3)

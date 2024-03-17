@@ -1,7 +1,6 @@
 ﻿using Cinemachine;
 using NSFWMiniJam3.Manager;
 using NSFWMiniJam3.SO;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -39,6 +38,8 @@ namespace NSFWMiniJam3.World
         }
 
         public string InteractionKey => "search";
+
+        public bool CanInteract => true;
 
         public void Interact(PlayerController pc)
         {
@@ -92,6 +93,7 @@ namespace NSFWMiniJam3.World
                                     npc.transform.parent = node.transform;
                                     npc.transform.position = node.transform.position;
                                     npc.GetComponent<SpriteRenderer>().sortingLayerName = "NPC";
+                                    npc.IsDowned = true;
                                 });
                             });
                         });
