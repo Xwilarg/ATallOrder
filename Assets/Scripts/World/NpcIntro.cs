@@ -13,6 +13,9 @@ namespace NSFWMiniJam3.World
         [SerializeField]
         private GameObject _endCG;
 
+        [SerializeField]
+        private Sprite _endSprite;
+
         public string InteractionKey => "speak";
 
         public void Interact(PlayerController pc)
@@ -22,7 +25,8 @@ namespace NSFWMiniJam3.World
                 var sr = GetComponent<SpriteRenderer>();
                 sr.sortingLayerName = "Player";
                 sr.sortingOrder = -1;
-                transform.position = new(transform.position.x, 1.17f);
+                sr.sprite = _endSprite;
+                transform.position = new(transform.position.x, 1.79f);
                 DialogueManager.Instance.ShowStory(transform.position, _gameEndText, () =>
                 {
                     _endCG.SetActive(true);
