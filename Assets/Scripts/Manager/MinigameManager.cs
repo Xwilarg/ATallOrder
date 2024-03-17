@@ -124,7 +124,7 @@ namespace NSFWMiniJam3.Manager
                 _spamInstruction.SetActive(false);
                 _anim.SetTrigger("Defeat");
 
-                StartCoroutine(WaitAndDo(1f, () =>
+                StartCoroutine(WaitAndDo(2f, () =>
                 {
                     EndGame();
                     _onWin?.Invoke();
