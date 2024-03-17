@@ -7,6 +7,8 @@ namespace NSFWMiniJam3.World
 {
     public class NpcIntro : MonoBehaviour, IInteractable
     {
+        public static NpcIntro Instance { private set; get; }
+
         [SerializeField]
         private TextAsset _introText, _introTwiceText, _gameEndText;
 
@@ -20,15 +22,24 @@ namespace NSFWMiniJam3.World
 
         public bool CanInteract => true;
 
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        public void Spe()
+        {
+            var sr = GetComponent<SpriteRenderer>();
+            sr.sortingLayerName = "Player";
+            sr.sortingOrder = -1;
+            sr.sprite = _endSprite;
+            transform.position = new(transform.position.x, 1.79f);
+        }
+
         public void Interact(PlayerController pc)
         {
             if (GameManager.Instance.MinigameWon == 3)
             {
-                var sr = GetComponent<SpriteRenderer>();
-                sr.sortingLayerName = "Player";
-                sr.sortingOrder = -1;
-                sr.sprite = _endSprite;
-                transform.position = new(transform.position.x, 1.79f);
                 DialogueManager.Instance.ShowStory(transform.position, _gameEndText, () =>
                 {
                     _endCG.SetActive(true);

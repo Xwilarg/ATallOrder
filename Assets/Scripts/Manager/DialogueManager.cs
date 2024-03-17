@@ -1,5 +1,6 @@
 using Ink.Runtime;
 using NSFWMiniJam3.Dialogue;
+using NSFWMiniJam3.World;
 using System;
 using System.Linq;
 using TMPro;
@@ -91,6 +92,10 @@ namespace NSFWMiniJam3.Manager
                 switch (s[0])
                 {
                     case "speaker": break;
+
+                    case "spe":
+                        NpcIntro.Instance.Spe();
+                        break;
 
                     case "cg":
                         _hSceneContainer.SetActive(content == "ENABLE");
