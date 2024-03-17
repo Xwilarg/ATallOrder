@@ -54,6 +54,7 @@ namespace NSFWMiniJam3.World
                     npc.GetComponent<SpriteRenderer>().flipX = npc.transform.position.x > pc.transform.position.x;
                 }
                 npc.transform.Translate(Vector3.up * .13f);
+                pc.RemoveInteraction();
                 DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.Intro, () =>
                 {
                     MinigameManager.Instance.Play(HiddenNpc,

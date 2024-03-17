@@ -62,9 +62,14 @@ namespace NSFWMiniJam3
         {
             if (_interactionTarget != null && _interactionTarget.ID == collision.gameObject.GetInstanceID())
             {
-                _interactionHint.gameObject.SetActive(false);
-                _interactionTarget = null;
+                RemoveInteraction();
             }
+        }
+
+        public void RemoveInteraction()
+        {
+            _interactionHint.gameObject.SetActive(false);
+            _interactionTarget = null;
         }
 
         public void SetCamCollider(Collider2D coll)
