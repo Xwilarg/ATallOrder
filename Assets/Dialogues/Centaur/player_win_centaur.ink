@@ -12,8 +12,8 @@ PULL MY MANE AND RIDE ME LIKE A COMMON SHOW PONY!
         Ahn~ so rough! Oh my, this feeling. That's it!
         Nay, nay I say!
         NAAAAAAAAAAAAAY~! <3
-        *huff* *huff* Oh, oh my, that was...amazing.
-        But my spirit..*huff*...will persist.
+        \*huff\* \*huff\* Oh, oh my, that was...amazing.
+        But my spirit..\*huff\*...will persist.
     +[No thanks.]
         ...Wh-
         WHY NOT?!?!
