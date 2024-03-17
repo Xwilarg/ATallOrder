@@ -8,7 +8,7 @@ So go ahead! Do what you will with me! Strip me of my garments! Leave me exposed
 Put a bit in my mouth and spank my flank! Call me your good little breed mare!
 PULL MY MANE AND RIDE ME LIKE A COMMON SHOW PONY!
     + [Give me some sugar!]
-        Oh, oh your starting.
+        Oh, oh your starting.  #cg enable
         Ahn~ so rough! Oh my, this feeling. That's it!
         Nay, nay I say!
         NAAAAAAAAAAAAAY~! <3
@@ -19,5 +19,5 @@ PULL MY MANE AND RIDE ME LIKE A COMMON SHOW PONY!
         WHY NOT?!?!
         Hmph, fine then.
         
--I will away to the garden should you desire a rematch.
+-I will away to the garden should you desire a rematch. #cg disable
 -> END

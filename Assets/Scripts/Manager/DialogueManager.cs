@@ -16,7 +16,10 @@ namespace NSFWMiniJam3.Manager
         private GameObject _container;
 
         [SerializeField]
-        private TextDisplay _display;
+        private GameObject _hSceneContainer;
+
+        [SerializeField]
+        private TextDisplay _display, _vnDisplay;
 
         [SerializeField]
         private Transform _choiceContainer;
@@ -67,6 +70,7 @@ namespace NSFWMiniJam3.Manager
         {
             Debug.Log($"[STORY] Playing {asset.name}");
 
+            _hSceneContainer.SetActive(false);
             _container.transform.position = new(refPos.x - 2f, refPos.y + 4f);
             _onDone = onDone;
             _story = new(asset.text);
@@ -86,12 +90,23 @@ namespace NSFWMiniJam3.Manager
                 {
                     case "speaker": break;
 
+                    case "cg":
+                        _hSceneContainer.SetActive(content == "ENABLE");
+                        break;
+
                     default:
                         Debug.LogError($"Unknown story key: {s[0]}");
                         break;
                 }
             }
-            _display.ToDisplay = text;
+            if (_hSceneContainer.activeInHierarchy)
+            {
+                _vnDisplay.ToDisplay = text;
+            }
+            else
+            {
+                _display.ToDisplay = text;
+            }
         }
 
         public void DisplayNextDialogue()

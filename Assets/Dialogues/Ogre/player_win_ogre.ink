@@ -7,7 +7,7 @@ My request may be selfish for me, but I have been feeling quite longing for a st
 This ass of mine will be yours, if you're in need of my services.
 So, what will it be?
     + [Give me some sugar!]
-	I have hoped you would say that!
+	I have hoped you would say that!  #cg enable
 	I'm happy to be of service for all of your needs, starting with that throbbing dick of yours!
 	Yes, that's the spot! Lemme feel all of it~
 	Put all your length into me, faster!
@@ -20,5 +20,5 @@ So, what will it be?
 	I respect your decision, even though I do feel a bit bummed.
 	Should you change your mind, you can find me in the garden outside the mansion!
 
-- See you around!
+- See you around! #cg disable
 -> END
