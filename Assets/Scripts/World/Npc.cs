@@ -71,7 +71,14 @@ namespace NSFWMiniJam3.World
         public void SetDestination(Door d)
         {
             _target = d;
-            GetComponent<SpriteRenderer>().flipX = d.transform.position.x > transform.position.x;
+            if (_info.PosOverrides.IsSpriteInverted)
+            {
+                GetComponent<SpriteRenderer>().flipX = d.transform.position.x > transform.position.x;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = d.transform.position.x < transform.position.x;
+            }
         }
 
         /*public void Interact(PlayerController pc)

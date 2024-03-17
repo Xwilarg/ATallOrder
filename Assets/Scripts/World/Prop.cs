@@ -45,6 +45,14 @@ namespace NSFWMiniJam3.World
             if (HiddenNpc != null)
             {
                 var npc = SpawnNpc(pc);
+                if (HiddenNpc.PosOverrides.IsSpriteInverted)
+                {
+                    npc.GetComponent<SpriteRenderer>().flipX = npc.transform.position.x < pc.transform.position.x;
+                }
+                else
+                {
+                    npc.GetComponent<SpriteRenderer>().flipX = npc.transform.position.x > pc.transform.position.x;
+                }
                 npc.transform.Translate(Vector3.up * .13f);
                 DialogueManager.Instance.ShowStory(transform.position, HiddenNpc.Intro, () =>
                 {

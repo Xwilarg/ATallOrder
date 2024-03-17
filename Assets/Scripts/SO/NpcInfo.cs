@@ -37,5 +37,6 @@ namespace NSFWMiniJam3.SO
     public struct WorldPosOverrides
     {
         public bool IsMovedDownWhenFound;
+        public bool IsSpriteInverted;
     }
 }
