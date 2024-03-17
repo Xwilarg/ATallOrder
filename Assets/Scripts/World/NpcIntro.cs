@@ -43,8 +43,6 @@ namespace NSFWMiniJam3.World
                 DialogueManager.Instance.ShowStory(transform.position, _gameEndText, () =>
                 {
                     _endCG.SetActive(true);
-
-                    StartCoroutine(WaitAndMenu());
                 });
             }
             else if (pc.HasKey)
@@ -58,9 +56,8 @@ namespace NSFWMiniJam3.World
             }
         }
 
-        private IEnumerator WaitAndMenu()
+        public void BackToMenu()
         {
-            yield return new WaitForSeconds(5f);
             SceneManager.LoadScene("Menu");
         }
     }
