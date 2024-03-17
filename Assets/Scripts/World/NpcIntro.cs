@@ -1,4 +1,5 @@
 ﻿using NSFWMiniJam3.Manager;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,9 @@ namespace NSFWMiniJam3.World
     {
         [SerializeField]
         private TextAsset _introText, _introTwiceText, _gameEndText;
+
+        [SerializeField]
+        private GameObject _endCG;
 
         public string InteractionKey => "speak";
 
@@ -21,7 +25,9 @@ namespace NSFWMiniJam3.World
                 transform.position = new(transform.position.x, 1.17f);
                 DialogueManager.Instance.ShowStory(transform.position, _gameEndText, () =>
                 {
-                    SceneManager.LoadScene("Menu");
+                    _endCG.SetActive(true);
+
+                    StartCoroutine(WaitAndMenu());
                 });
             }
             else if (pc.HasKey)
@@ -33,6 +39,12 @@ namespace NSFWMiniJam3.World
                 pc.HasKey = true;
                 DialogueManager.Instance.ShowStory(transform.position, _introText);
             }
+        }
+
+        private IEnumerator WaitAndMenu()
+        {
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene("Menu");
         }
     }
 }
