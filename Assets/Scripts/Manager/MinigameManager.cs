@@ -35,7 +35,7 @@ namespace NSFWMiniJam3.Manager
 
         private NpcInfo npcInfo;
 
-        private int _score;
+        private float _score;
 
         private void Awake()
         {
@@ -146,7 +146,7 @@ namespace NSFWMiniJam3.Manager
             _bossProg.localScale = new(Mathf.Clamp01(1f - p), 1f, 1f);
         }
 
-        public void UpdateScore(int val)
+        public void UpdateScore(float val)
         {
             if (!_gotDamageYet && val < 0)
             {
